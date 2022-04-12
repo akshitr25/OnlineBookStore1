@@ -18,8 +18,21 @@
             if(session.getAttribute("user")==null)
                 response.sendRedirect("login.jsp");
         %>
+        <script>
+            function backToHome(elem)
+            {
+                elem.setAttribute("action","userHome.jsp");
+                elem.submit();
+            } 
+        </script>
         <h1>Genre Page</h1>
-        Genre: ${genre}
+        <b>Genre:</b> ${genre}
+        <form onsubmit="backToHome(this)">
+            <button id="backtohome" style="float: right;">Back To Home</button>
+        </form><br>
+        <form action="userLogout">
+        <button id="logoutbutton" style="float: right;"><b>Logout</b></button>
+        </form>
         <form method="post">
         <table id="menu">
                     <tr>
@@ -49,13 +62,12 @@
                     String genre=rs.getString(7);   
         %>
         <tr>
-                   <td><%=bookid%></td>
+                   <td align="center"><%=bookid%></td>
                    <td><a href="redirectToBook?bookid=<%=bookid%>"><%=bookname%></a></td>
                    <td><%=author%></td>
                    <td><%=desc%></td>
-                   <td>₹<%=price%></td>
-                   <td><%=disc%>%</td>
-                   <td><%=genre%></td>
+                   <td align="center">₹<%=price%></td>
+                   <td align="center"><%=disc%>%</td>
                    </tr>
         <%  }
             }catch(Exception e)
