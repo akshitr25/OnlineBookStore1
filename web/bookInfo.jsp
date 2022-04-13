@@ -35,6 +35,20 @@
                     double final_price=price-savings;
                     session.setAttribute("finalprice",final_price);//for cart
         %>
+        <script>
+            function backToHome(elem)
+            {
+                elem.setAttribute("action","userHome.jsp");
+                elem.submit();
+            }  
+        </script>
+        <form onsubmit="backToHome(this)">
+            <button id="backtohome" style="float: right;">Back To Home</button>
+        </form>  
+        <br><br>
+        <form action="userLogout">
+        <button id="logoutbutton" style="float: right;"><b>Logout</b></button>
+        </form>
         <b>Book ID:</b> <%=bookid%><br><br>
         <b>Book Name:</b> <%=bookname%><br><br>
         <b>Author:</b> <%=author%><br><br>

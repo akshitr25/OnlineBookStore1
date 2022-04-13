@@ -35,6 +35,7 @@
             int quantity_var=rst.getInt(7);
             double finalprice_var=rst.getDouble(8);
             String address_var=rst.getString(9);
+            
         %>
         <style>
         th
@@ -89,6 +90,7 @@
         <div id="info">
         <span id="phoneno"><b>Customer Phone No.: ${phoneno}</b></span>
         <span id="name"><b>Customer Name: ${name}</b></span>
+        
         </div>
         <table>
         <tr>
@@ -108,7 +110,7 @@
         <td><%=bookname_var%></td> 
         <td><%=price_var%></td> 
         <td><%=quantity_var%></td> 
-        <td><%=disc_var%></td>
+        <td><%=disc_var%>%</td>
         <td><%=finalprice_var%></td>
         </tr>
         <tr>
