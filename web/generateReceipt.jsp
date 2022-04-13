@@ -1,6 +1,10 @@
+<%@page import="java.time.LocalDateTime"%>
+<%@page import="java.time.format.DateTimeFormatter"%>
+<%@page import="java.time.LocalTime"%>
+<%@page import="java.time.LocalDate"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
-<%@include file="header.jsp"%>
+
 <%@page import="java.sql.Connection"%>
 <%@page import="onlinebookstore.MyDb"%>
 <%@page import="java.util.Formatter"%>
@@ -19,8 +23,8 @@
             Connection con=db.getCon();
             int order_id=(int)request.getAttribute("orderid");
             Date date = new Date();
-            SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
-            SimpleDateFormat formatter1=new SimpleDateFormat("HH:mm:ss");
+            SimpleDateFormat formatter = new SimpleDateFormat("MMMM dd, yyyy");
+            SimpleDateFormat formatter1=new SimpleDateFormat("hh:mm aa");
             String dateString=formatter.format(date);
             String timeString=formatter1.format(date);
             PreparedStatement pst=con.prepareStatement("select * from orders where orderid=?");
@@ -35,7 +39,10 @@
             int quantity_var=rst.getInt(7);
             double finalprice_var=rst.getDouble(8);
             String address_var=rst.getString(9);
-            
+            /*String datetime_var=rst.getDate(10).toString();
+            DateTimeFormatter myFormat = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
+            LocalDateTime myDateObj=LocalDateTime.parse(datetime_var,myFormat);
+            String formattedDate = myDateObj.format(myFormat);*/
         %>
         <style>
         th
@@ -88,9 +95,9 @@
         </center>
         <b>Order ID: <%=order_id%></b><br>
         <div id="info">
-        <span id="phoneno"><b>Customer Phone No.: ${phoneno}</b></span>
-        <span id="name"><b>Customer Name: ${name}</b></span>
-        
+        <span id="phoneno"><b>Customer Phone No.: ${phoneno}</b></span><br>
+        <span id="name"><b>Customer Name: ${name}</b></span><br>
+        <span id="address"><b>Address: <%=address_var%></b></span>
         </div>
         <table>
         <tr>
@@ -119,7 +126,7 @@
         <td></td>
         <td></td>
         <td><b>Total Price<b></td>
-        <td><b><%=finalprice_var%></b></td>
+        <td><b>₹<%=finalprice_var%></b></td>
         </tr> 
         </table>  
         <%
@@ -133,7 +140,7 @@
             var doc=new jsPDF();
             var div=document.querySelector('#bill');
             doc.fromHTML(div,10,5);
-            doc.save("Book Order<%=order_id%>.pdf");
+            doc.save("Book Order <%=order_id%>.pdf");
         </script> 
     </body>
 </html>

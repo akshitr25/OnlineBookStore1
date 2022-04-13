@@ -52,7 +52,7 @@
         <b>Book ID:</b> <%=bookid%><br><br>
         <b>Book Name:</b> <%=bookname%><br><br>
         <b>Author:</b> <%=author%><br><br>
-        <b>Special Discount:</b> <%=disc%><br><br>
+        <b>Special Discount: </b><%=disc%>%<br><br>
         <b>Description:</b> <%=desc%><br><br>
         <b>Price:</b> ₹<strike><%=price%></strike>&nbsp<b><%=final_price%></b><br><br>
         <b>You save: ₹<%=savings%></b><br><br>

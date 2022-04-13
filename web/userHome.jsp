@@ -17,6 +17,11 @@
             {
                 elem.setAttribute("action","cartPage.jsp");
                 elem.submit();
+            }
+            function redirectToOrders(elem)
+            {
+                elem.setAttribute("action","viewOrders.jsp");
+                elem.submit();
             }  
         </script>
         <% 
@@ -34,10 +39,13 @@
         <form action="userLogout">
         <button id="logoutbutton" style="float: right;"><b>Logout</b></button>
         </form>
-        <p>Hello: ${name}</p>
+        <p>Hello, ${name}</p>
         <form id="redirectToCart" method="post" name="gotocart" onsubmit="redirectToCart(this);">
             <button>View Cart</button>
-    </form>
+        </form>
+        <form id="redirectToOrders" method="post" name="gotoorders" onsubmit="redirectToOrders(this);">
+            <button>View Your Orders</button>
+        </form>
         <h1>Select a Genre</h1>
         <form action="redirectToGenre" method="post">
             <pre>

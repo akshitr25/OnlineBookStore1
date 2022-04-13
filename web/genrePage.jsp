@@ -68,7 +68,7 @@
                    <td><%=desc%></td>
                    <td align="center">₹<%=price%></td>
                    <td align="center"><%=disc%>%</td>
-                   </tr>
+        </tr>
         <%  }
             }catch(Exception e)
             {}

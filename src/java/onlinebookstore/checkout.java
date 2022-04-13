@@ -5,6 +5,9 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -55,10 +58,17 @@ public class checkout extends HttpServlet {
             
             if(found)
                 order_id=rs4.getInt(1)+1;
-            PreparedStatement ps4=con.prepareStatement("insert into orders values(?,?,?,?,?,?,?,?,?);");//problem
+            LocalDateTime myDateObj = LocalDateTime.now();
+            //System.out.println("Before formatting: " + myDateObj);
+            DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            String formattedDate = myDateObj.format(myFormatObj);
+            //System.out.println("After formatting: " + formattedDate);
+
+            PreparedStatement ps4=con.prepareStatement("insert into orders values(?,?,?,?,?,?,?,?,?,?);");//problem
             /*out.println("<script type=\"text/javascript\">");
                 out.println("alert('1');");
                 out.println("</script>");*/
+            //System.out.println(sqldatetime_var);
             ps4.setInt(1,order_id);
             ps4.setString(2,uname_var);
             ps4.setInt(3,bookid_var);
@@ -68,7 +78,12 @@ public class checkout extends HttpServlet {
             ps4.setInt(7,quantity_var);
             ps4.setDouble(8,finalprice_var);
             ps4.setString(9,address_var);
+            ps4.setString(10,formattedDate);
+            out.println("<script type=\"text/javascript\">");
+                out.println("alert('123');");
+                out.println("</script>");
             ps4.executeUpdate();
+            
             request.setAttribute("orderid",order_id);
             
             request.getRequestDispatcher("generateReceipt.jsp").forward(request, response);

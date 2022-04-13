@@ -40,8 +40,8 @@
         <form action="userLogout">
         <button id="logoutbutton" style="float: right;"><b>Logout</b></button>
         </form>
-        Username: ${user}<br>
-        Name: ${name}<br><br>
+        <b>Username:</b> ${user}<br>
+        <b>Name:</b> ${name}<br><br>
         <table id="cartlist">
                     <tr>
                     <th>Book ID</th>
@@ -70,12 +70,12 @@
             int disc_var=rs2.getInt(6);
         %>
         <tr>
-                   <td><%=bookid_var%></td>
+                   <td align="center"><%=bookid_var%></td>
                    <td><%=bookname_var%></td>
-                   <td>₹<%=price_var%></td>
-                   <td><%=disc_var%></td>
-                   <td><%=quantity_var%></td>
-                   <td>₹<%=finalprice_var%></td>
+                   <td align="center">₹<%=price_var%></td>
+                   <td align="center"><%=disc_var%>%</td>
+                   <td align="center"><%=quantity_var%></td>
+                   <td align="center">₹<%=finalprice_var%></td>
                    </tr>
         </table>
         <form id="redirectToCheckout" method="post" name="checkoutForm" onsubmit="redirectToCheckout(this);">
