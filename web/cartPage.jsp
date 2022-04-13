@@ -21,7 +21,12 @@
             {
                 elem.setAttribute("action","userHome.jsp");
                 elem.submit();
-            }        
+            }   
+            function redirectToEditCart(elem)
+            {
+                elem.setAttribute("action","editCart.jsp");
+                elem.submit();
+            }
         </script>
         <%
             try{
@@ -33,6 +38,9 @@
                 response.sendRedirect("login.jsp");
         %>
         <h1>Your Cart</h1>
+        <form onsubmit="redirectToEditCart(this)">
+            <button id="editCartButton" style="float: left;">Edit Cart</button>
+        </form>  
         <form onsubmit="backToHome(this)">
             <button id="backtohome" style="float: right;">Back To Home</button>
         </form>  
@@ -60,7 +68,7 @@
             rs1.next();
             String bookid_var=rs1.getString(2);
             int quantity_var=rs1.getInt(4);
-            double finalprice_var=rs1.getDouble(3)*quantity_var;
+            //double finalprice_var=rs1.getDouble(3)*quantity_var;
             PreparedStatement ps2=con.prepareStatement("select * from books where bookid=?");
             ps2.setString(1,bookid_var);
             ResultSet rs2=ps2.executeQuery();
@@ -68,6 +76,7 @@
             String bookname_var=rs2.getString(2);
             int price_var=rs2.getInt(5);
             int disc_var=rs2.getInt(6);
+            double finalprice_var=(price_var*quantity_var)*(100-disc_var)/100;
         %>
         <tr>
                    <td align="center"><%=bookid_var%></td>
