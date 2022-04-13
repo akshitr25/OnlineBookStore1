@@ -54,12 +54,12 @@
         <h1 id="rightheading">Login or Register</h1>
         <form action="registerCheck" method="post">
             <pre>
-            <b>Username </b> <input type="text" name="user" class="text" placeholder="Enter username"/>
-            <b>Name     </b> <input type="text" name="name" class="text" placeholder="Enter name"/>
-            <b>Phone no.</b> <input type="text" name="phoneno" class="text" placeholder="Enter phone no."/>
-            <b>E-mail   </b> <input type="text" name="email" class="text" placeholder="Enter email"/>
-            <b>Address  </b> <input type="text" name="address" class="text" placeholder="Enter address"/>
-            <b>Password </b> <input type="password" name="pass" class="text" placeholder="Enter password"/>
+            <b>Username </b> <input type="text" name="user" class="text" placeholder="Enter username" required/>
+            <b>Name     </b> <input type="text" name="name" class="text" placeholder="Enter name" required/>
+            <b>Phone no.</b> <input type="text" name="phoneno" class="text" placeholder="Enter phone no." required/>
+            <b>E-mail   </b> <input type="text" name="email" class="text" placeholder="Enter email" required/>
+            <b>Address  </b> <input type="text" name="address" class="text" placeholder="Enter address" required/>
+            <b>Password </b> <input type="password" name="pass" class="text" placeholder="Enter password" required/>
             <input type="submit" value="Register" class="button"/>
             </pre>
          </form>

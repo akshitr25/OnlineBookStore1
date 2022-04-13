@@ -59,7 +59,7 @@
         <b>Genre: </b><%=genre%>
         <form action="addToCart" method="post">
             <button name="bookid" value=<%=bookid%>>Add to Cart</button>
-            <b>Quantity</b><input type="number" min="1" max="10" name="quantity" class="text"/>
+            <b>Quantity</b><input type="number" min="1" max="10" name="quantity" class="text" required/>
         </form>
         <%} catch(Exception e)
             {}

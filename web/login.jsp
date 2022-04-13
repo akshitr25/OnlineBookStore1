@@ -54,8 +54,8 @@
         <h1 id="rightheading">Login or Register</h1>
         <form action="loginCheck" method="post">
             <pre>
-            <b>Username</b> <input type="text" name="user" class="text" placeholder="Enter username"/>
-            <b>Password</b> <input type="password" name="pass" class="text" placeholder="Enter password"/>
+            <b>Username</b> <input type="text" name="user" class="text" placeholder="Enter username" required/>
+            <b>Password</b> <input type="password" name="pass" class="text" placeholder="Enter password" required/>
             <input type="submit" value="Login" class="button"/>
             </pre>
          </form>
