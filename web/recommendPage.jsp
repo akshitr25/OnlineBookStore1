@@ -20,11 +20,25 @@
             rs0.next();
             String bookbought=rs0.getString(1);
         %>
+        <script>
+            function backToHome(elem)
+            {
+                elem.setAttribute("action","userHome.jsp");
+                elem.submit();
+            } 
+        </script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Recommendations</title>
     </head>
     <body>
         <h1>Recommendations</h1>
+        <form onsubmit="backToHome(this)">
+            <button id="backtohome" style="float: right;">Back To Home</button>
+        </form>  
+        <br><br>
+        <form action="userLogout">
+        <button id="logoutbutton" style="float: right;"><b>Logout</b></button>
+        </form>
         <p>Since you last ordered <b><%=bookbought%></b>, you may like these books:</p>
         <table id="recommend">
                     <tr>
