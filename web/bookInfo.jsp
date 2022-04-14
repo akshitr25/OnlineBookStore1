@@ -41,6 +41,11 @@
                 elem.setAttribute("action","userHome.jsp");
                 elem.submit();
             }  
+            function redirectToCheckout(elem)
+            {
+                elem.setAttribute("action","checkoutPage.jsp");
+                elem.submit();
+            }
         </script>
         <form onsubmit="backToHome(this)">
             <button id="backtohome" style="float: right;">Back To Home</button>
@@ -61,6 +66,9 @@
             <button name="bookid" value=<%=bookid%>>Add to Cart</button>
             <b>Quantity</b><input type="number" min="1" max="10" name="quantity" class="text" required/>
         </form>
+        <form onsubmit="redirectToCheckout(this);">
+            <button id="gotoCheckout">Proceed to Checkout</button>
+        </form> 
         <%} catch(Exception e)
             {}
         %>

@@ -22,6 +22,11 @@
             {
                 elem.setAttribute("action","viewOrders.jsp");
                 elem.submit();
+            }
+            function redirectToRecommend(elem)
+            {
+                elem.setAttribute("action","recommendPage.jsp");
+                elem.submit();
             }  
         </script>
         <% 
@@ -45,6 +50,9 @@
         </form>
         <form id="redirectToOrders" method="post" name="gotoorders" onsubmit="redirectToOrders(this);">
             <button>View Your Orders</button>
+        </form>
+        <form id="redirectToRecommend" method="post" name="gotorecommend" onsubmit="redirectToRecommend(this);">
+            <button>View Recommendations</button>
         </form>
         <h1>Select a Genre</h1>
         <form action="redirectToGenre" method="post">
