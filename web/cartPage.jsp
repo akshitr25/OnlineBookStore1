@@ -27,6 +27,11 @@
                 elem.setAttribute("action","editCart.jsp");
                 elem.submit();
             }
+            function redirectToWishlist(elem)
+            {
+                elem.setAttribute("action","wishlistPage.jsp");
+                elem.submit();
+            }
         </script>
         <%
             try{
@@ -38,6 +43,9 @@
                 response.sendRedirect("login.jsp");
         %>
         <h1>Your Cart</h1>
+        <form id="redirectToWishlist" method="post" name="gotowishlist" onsubmit="redirectToWishlist(this);">
+            <button>View Wishlist</button>
+        </form>
         <form onsubmit="redirectToEditCart(this)">
             <button id="editCartButton" style="float: left;">Edit Cart</button>
         </form>  

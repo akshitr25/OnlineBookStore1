@@ -28,6 +28,12 @@
                 elem.setAttribute("action","recommendPage.jsp");
                 elem.submit();
             }  
+            function redirectToWishlist(elem)
+            {
+                elem.setAttribute("action","wishlistPage.jsp");
+                elem.submit();
+            }
+            
         </script>
         <% 
             response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); //HTTP 1.1
@@ -47,6 +53,9 @@
         <p>Hello, ${name}</p>
         <form id="redirectToCart" method="post" name="gotocart" onsubmit="redirectToCart(this);">
             <button>View Cart</button>
+        </form>
+        <form id="redirectToWishlist" method="post" name="gotowishlist" onsubmit="redirectToWishlist(this);">
+            <button>View Wishlist</button>
         </form>
         <form id="redirectToOrders" method="post" name="gotoorders" onsubmit="redirectToOrders(this);">
             <button>View Your Orders</button>
