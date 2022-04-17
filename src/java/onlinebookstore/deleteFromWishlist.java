@@ -3,9 +3,8 @@ package onlinebookstore;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
-import java.sql.SQLException;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -14,39 +13,23 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-public class addToCart extends HttpServlet {
+public class deleteFromWishlist extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             HttpSession session=request.getSession();
             String uname_var=session.getAttribute("user").toString();
-            String bookid_var=request.getParameter("bookid");
-            int quantity_var=Integer.parseInt(request.getParameter("quantity"));
-            double finalprice_var=(double)session.getAttribute("finalprice")*quantity_var;
             MyDb db=new MyDb();
             Connection con=db.getCon();
-            PreparedStatement ps0=con.prepareStatement("select * from cart where username=?");
-            ps0.setString(1,uname_var);
-            ResultSet rs0=ps0.executeQuery();
-            /*if(rs0.next())
-            {
-                
-            }*/
-            PreparedStatement ps=con.prepareStatement("insert into cart values(?,?,?,?);");
-            ps.setString(1,uname_var);
-            ps.setString(2,bookid_var);
-            ps.setDouble(3,finalprice_var);
-            ps.setInt(4,quantity_var);
-            ps.executeUpdate(); //update done
-                out.println("<script type=\"text/javascript\">");
-                out.println("alert('Item added to your cart!');");
-                out.println("location='bookInfo.jsp';");
-                out.println("</script>");
-        }
-        catch(SQLException ex)
-        {
-            Logger.getLogger(registerCheck.class.getName()).log(Level.SEVERE, null, ex);
+            int bookid_var=Integer.parseInt(request.getParameter("bookid"));
+            PreparedStatement ps=con.prepareStatement("delete from wishlist where bookid=? and username=?");
+            ps.setInt(1,bookid_var);
+            ps.setString(2,uname_var);
+            ps.executeUpdate();
+            response.sendRedirect("wishlistPage.jsp");
+        } catch (SQLException ex) {
+            Logger.getLogger(deleteFromWishlist.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

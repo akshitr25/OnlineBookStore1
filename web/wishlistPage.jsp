@@ -46,21 +46,23 @@
                     <tr>
                     <th>Book ID</th>
                     <th>Book Name</th>
+                    <th>Remove</th>
                     </tr>
-        <% String username_var=session.getAttribute("user").toString();
+        <%  String username_var=session.getAttribute("user").toString();
             MyDb db=new MyDb();
             Connection con=db.getCon();
             PreparedStatement ps1=con.prepareStatement("select bookid,bookname from wishlist where username=?;");
             ps1.setString(1,username_var);
-            ResultSet rs=ps1.executeQuery();
-            while(rs.next())
+            ResultSet rs1=ps1.executeQuery();
+            while(rs1.next())
             {
-                int bookid_var=rs.getInt(1);
-                String bookname_var=rs.getString(2);
+                int bookid_var=rs1.getInt(1);
+                String bookname_var=rs1.getString(2);
         %>
         <tr>
                    <td align="center"><%=bookid_var%></td>
                    <td><a href="redirectToBook?bookid=<%=bookid_var%>"><%=bookname_var%></a></td>
+                   <td><a href="deleteFromWishlist?bookid=<%=bookid_var%>" style="text-decoration: none;"><center>&#10060</center></a></td>
         </tr>
         <%
             }

@@ -86,13 +86,13 @@
                    <td align="center"><%=disc_var%>%</td>
                    <td align="center"><%=quantity_var%></td>
                    <td align="center">₹<%=finalprice_var%></td>
-                   <td><a href="deleteFromCart?bookid=<%=bookid_var%>"><center>&#10060</center></a></td>
-                   <td><form action="updateQuantity" method="post">
-            <b>Quantity</b><input name="quantity" type="number" min="1" max="10" class="text" required/>
-            <button name="bookid" value=<%=bookid_var%>>Save Quantity</button>
-                       </form></td>
+                   <td><a href="deleteFromCart?bookid=<%=bookid_var%>" style="text-decoration: none;"><center>&#10060</center></a></td>
             </tr>
         </table>
+                   <form action="updateQuantity" method="post">
+            <b>Quantity </b><input name="quantity" type="number" min="1" max="10" class="text" required/>
+            <button name="bookid" value=<%=bookid_var%>><b>Save Quantity</b></button>
+                       </form>
         <%
             }catch(Exception ex)
             {}

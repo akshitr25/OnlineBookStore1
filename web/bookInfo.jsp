@@ -17,6 +17,9 @@
             if(session.getAttribute("user")==null) //USE WITH CARE, changing variable name will lead to total confusion
                 response.sendRedirect("login.jsp");
         %>
+        <style>
+            
+        </style>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Book Info</title>
     </head>
@@ -38,30 +41,6 @@
                     int disc=rs.getInt(6);
                     String genre=rs.getString(7);
                     String img_path=bookid+".jpg";
-                        /*InputStream sImage;
-                        String imgpath=rs.getString(8);
-                        byte[] bytearray = new byte[1048576];
-                        int size=0;
-                        sImage = rs.getBinaryStream(1);
-                        response.reset();
-                        response.setContentType("image/jpeg");
-                        while((size=sImage.read(bytearray))!= -1 )
-                        {
-                            response.getOutputStream().
-                            write(bytearray,0,size);
-                        }
-                        Vector vList=new Vector();*/
-                        /*InputStream in = rs.getBinaryStream(8);
-                        OutputStream f = new FileOutputStream(new File(bookid+".jpg"));
-                        //i++;
-                        int c = 0;
-                        while ((c = in.read()) > -1) 
-                        {
-                            f.write(c);
-                        }
-                        f.close();
-                        in.close();*/
-                    //LongBlob bookimg_var=rs.getBlob(8);
                     double savings=price*disc/100;
                     double final_price=price-savings;
                     session.setAttribute("finalprice",final_price);//for cart
@@ -94,7 +73,8 @@
         <button id="logoutbutton" style="float: right;"><b>Logout</b></button>
         </form>
             <img id=<%=bookid%> src=<%=img_path%> width="155" height="250">
-        <b>Book ID:</b> <%=bookid%><br><br>
+        <div>
+            <b>Book ID:</b> <%=bookid%><br><br>
         <b>Book Name:</b> <%=bookname%><br><br>
         <b>Author:</b> <%=author%><br><br>
         <b>Special Discount: </b><%=disc%>%<br><br>
@@ -112,6 +92,7 @@
         <form onsubmit="redirectToCheckout(this);">
             <button id="gotoCheckout">Proceed to Checkout</button>
         </form> 
+            </div>
         <%} catch(Exception e)
             {}
         %>
