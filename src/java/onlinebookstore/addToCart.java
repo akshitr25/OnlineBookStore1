@@ -29,10 +29,12 @@ public class addToCart extends HttpServlet {
             PreparedStatement ps0=con.prepareStatement("select * from cart where username=?");
             ps0.setString(1,uname_var);
             ResultSet rs0=ps0.executeQuery();
-            /*if(rs0.next())
-            {
-                
-            }*/
+                if(rs0.next())
+                {
+                    PreparedStatement pst=con.prepareStatement("delete from cart where username=?;");
+                    pst.setString(1,uname_var);
+                    pst.executeUpdate();
+                }
             PreparedStatement ps=con.prepareStatement("insert into cart values(?,?,?,?);");
             ps.setString(1,uname_var);
             ps.setString(2,bookid_var);

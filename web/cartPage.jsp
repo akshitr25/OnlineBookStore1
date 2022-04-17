@@ -73,7 +73,13 @@
             PreparedStatement ps1=con.prepareStatement("select * from cart where username=?");
             ps1.setString(1,username_var);
             ResultSet rs1=ps1.executeQuery();
-            rs1.next();
+            if(!rs1.next())
+            {
+                out.println("<script type=\"text/javascript\">");
+                out.println("alert('Please add a book to your cart.');");
+                out.println("location='userHome.jsp';");
+                out.println("</script>");
+            }
             String bookid_var=rs1.getString(2);
             int quantity_var=rs1.getInt(4);
             //double finalprice_var=rs1.getDouble(3)*quantity_var;

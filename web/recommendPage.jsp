@@ -13,6 +13,16 @@
             String uname_var=session.getAttribute("user").toString();
             MyDb db=new MyDb();
             Connection con=db.getCon();
+            PreparedStatement pst=con.prepareStatement("select * from orders where username=?");
+            pst.setString(1,uname_var);
+            ResultSet rst=pst.executeQuery();
+            if(!rst.next())
+            {
+                out.println("<script type=\"text/javascript\">");
+                out.println("alert('Please place orders to get recommendations.');");
+                out.println("location='userHome.jsp';");
+                out.println("</script>");
+            }
             PreparedStatement ps0=con.prepareStatement("select orders.bookname from orders,users where users.username=orders.username and users.username=? and orders.orderid=(select max(orders.orderid)from orders where orders.username=?);");
             ps0.setString(1,uname_var);
             ps0.setString(2,uname_var);

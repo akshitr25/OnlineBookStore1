@@ -39,10 +39,6 @@
             int quantity_var=rst.getInt(7);
             double finalprice_var=rst.getDouble(8);
             String address_var=rst.getString(9);
-            /*String datetime_var=rst.getDate(10).toString();
-            DateTimeFormatter myFormat = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
-            LocalDateTime myDateObj=LocalDateTime.parse(datetime_var,myFormat);
-            String formattedDate = myDateObj.format(myFormat);*/
         %>
         <style>
         th

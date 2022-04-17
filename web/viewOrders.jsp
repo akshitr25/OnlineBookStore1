@@ -29,6 +29,17 @@
                 response.sendRedirect("login.jsp");
             MyDb db=new MyDb();
             Connection con=db.getCon();
+            String uname_var=session.getAttribute("user").toString();
+                PreparedStatement pst=con.prepareStatement("select * from orders where username=?;");
+                pst.setString(1,uname_var);
+                ResultSet rst=pst.executeQuery();
+                if(!rst.next())
+                {
+                    out.println("<script type=\"text/javascript\">");
+                    out.println("alert('You have not placed any orders yet.');");
+                    out.println("location='userHome.jsp';");
+                    out.println("</script>");
+                }
             PreparedStatement ps0=con.prepareStatement("select count(*) from orders;");
             ResultSet rs0=ps0.executeQuery();
             rs0.next();
@@ -52,7 +63,7 @@
             <th>Time</th>
             </tr>   
             <%
-            String uname_var=session.getAttribute("user").toString();
+            //uname_var=session.getAttribute("user").toString();
             //MyDb db=new MyDb();
             //Connection con=db.getCon();
             PreparedStatement ps=con.prepareStatement("select * from orders where username=?");

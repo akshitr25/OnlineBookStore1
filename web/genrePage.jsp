@@ -17,6 +17,8 @@
             
             if(session.getAttribute("user")==null)
                 response.sendRedirect("login.jsp");
+            else if(session.getAttribute("genre")==null)
+                response.sendRedirect("userHome.jsp");
         %>
         <script>
             function backToHome(elem)

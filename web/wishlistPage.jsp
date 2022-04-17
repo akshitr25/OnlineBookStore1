@@ -51,6 +51,16 @@
         <%  String username_var=session.getAttribute("user").toString();
             MyDb db=new MyDb();
             Connection con=db.getCon();
+            PreparedStatement ps0=con.prepareStatement("select * from wishlist where username=?;");
+            ps0.setString(1,username_var);
+            ResultSet rs0=ps0.executeQuery();
+            if(!rs0.next())
+            {
+                out.println("<script type=\"text/javascript\">");
+                out.println("alert('Please add books to your wishlist.');");
+                out.println("location='userHome.jsp';");
+                out.println("</script>");
+            }
             PreparedStatement ps1=con.prepareStatement("select bookid,bookname from wishlist where username=?;");
             ps1.setString(1,username_var);
             ResultSet rs1=ps1.executeQuery();
