@@ -69,6 +69,7 @@
             <button name="genre" type="submit" value="Wrestling">Wrestling</button>
             <button name="genre" type="submit" value="Fantasy Fiction">Fantasy Fiction</button>
             <button name="genre" type="submit" value="Self-Help">Self-Help</button>
+            <button name="genre" type="submit" value="Action and Adventure">Action and Adventure</button>
             </pre>
         </form>
     </body>
