@@ -11,6 +11,7 @@
         <title>Your Cart</title>
     </head>
     <body>
+        
         <script>
             function redirectToCheckout(elem)
             {

@@ -70,6 +70,10 @@
             <button name="genre" type="submit" value="Fantasy Fiction">Fantasy Fiction</button>
             <button name="genre" type="submit" value="Self-Help">Self-Help</button>
             <button name="genre" type="submit" value="Action and Adventure">Action and Adventure</button>
+            <button name="genre" type="submit" value="Classics">Classics</button>
+            <button name="genre" type="submit" value="Historical Fiction">Historical Fiction</button>
+            <button name="genre" type="submit" value="Science Fiction">Science Fiction</button>
+            <button name="genre" type="submit" value="Mystery">Mystery</button>
             </pre>
         </form>
     </body>

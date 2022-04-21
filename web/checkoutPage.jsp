@@ -19,7 +19,6 @@
             response.setHeader("Expires","0"); //Proxies
             if(session.getAttribute("user")==null)
                 response.sendRedirect("login.jsp");
-            
             String uname_var=session.getAttribute("user").toString();
             String name_var=session.getAttribute("name").toString();
             MyDb db=new MyDb();
@@ -45,6 +44,7 @@
             String phoneno_var=rs3.getString(1);
             String address_var=rs3.getString(2);
             session.setAttribute("phoneno",phoneno_var);//trial
+            String img_path=bookid_var+".jpg";
         %>
         <script>
             function backToHome(elem)
@@ -60,14 +60,17 @@
         <form action="userLogout">
         <button id="logoutbutton" style="float: right;"><b>Logout</b></button>
         </form>
-        <b><p>Name:</b> <%=name_var%></p>
-        <b><p>Contact no.:</b> <%=phoneno_var%></p>
-        <b><p>Address:</b> <%=address_var%></p>
-        <b><p>Book ID:</b> <%=bookid_var%></p>
-        <b><p>Book Name:</b> <%=bookname_var%></p>
-        <b><p>Price:</b> ₹<%=price_var%></p>
-        <b><p>Discount:</b> <%=disc_var%>%</p>
-        <b><p>Final Amount:</b> ₹<%=finalprice_var%></p>
+        
+        <img id=<%=bookid_var%> src=<%=img_path%> width="155" height="250"> <!ignore error>
+        <p><b>Name:</b> <%=name_var%></p>
+        <p><b>Contact no.:</b> <%=phoneno_var%></p>
+        <p><b>Address:</b> <%=address_var%></p>
+        <p><b>Book ID:</b> <%=bookid_var%></p>
+        <p><b>Book Name:</b> <%=bookname_var%></p>
+        <p><b>Price:</b> ₹<%=price_var%></p>
+        <p><b>Discount:</b> <%=disc_var%>%</p>
+        <p><b>Quantity:</b> <%=quantity_var%></p>
+        <p><b>Final Amount:</b> ₹<%=finalprice_var%></p>
         <form action="checkout" method="post">
             <input type="submit" value="Checkout" class="button"/>
         </form>

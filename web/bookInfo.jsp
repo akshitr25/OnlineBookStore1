@@ -72,7 +72,7 @@
         <form action="userLogout">
         <button id="logoutbutton" style="float: right;"><b>Logout</b></button>
         </form>
-            <img id=<%=bookid%> src=<%=img_path%> width="155" height="250">
+            <img id=<%=bookid%> src=<%=img_path%> width="155" height="250"> <!ignore error>
         <div>
             <b>Book ID:</b> <%=bookid%><br><br>
         <b>Book Name:</b> <%=bookname%><br><br>
@@ -84,9 +84,9 @@
         <b>Genre: </b><%=genre%>
         <form action="addToWishlist" method="post">
             <button name="bookid" value=<%=bookid%> id="wishlistbutton">Add to Wishlist</button>
-        </form>
+        </form> <!ignore error>
         <form action="addToCart" method="post">
-            <button name="bookid" value=<%=bookid%>>Add to Cart</button>
+            <button name="bookid" value=<%=bookid%>>Add to Cart</button> <!ignore error>
             <b>Quantity</b><input type="number" min="1" max="10" name="quantity" class="text" required/>
         </form>
         <form onsubmit="redirectToCheckout(this);">
