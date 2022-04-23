@@ -36,7 +36,7 @@ public class registerCheck extends HttpServlet {
             ps.executeUpdate(); //update done
                 out.println("<script type=\"text/javascript\">");
                 out.println("alert('Registration Successful, Please Login');");
-                out.println("location='login.jsp';");
+                out.println("location='login1.jsp';");
                 out.println("</script>");
         }
         catch(SQLException ex) {

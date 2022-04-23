@@ -41,13 +41,13 @@ public class loginCheck extends HttpServlet {
                 session.setAttribute("genre",null);
                 session.setAttribute("finalprice",null);//for cart
                 session.setAttribute("phoneno",null);
-                response.sendRedirect("userHome.jsp");
+                response.sendRedirect("userHome1.jsp"); //change!
             }
             else
             {
                 out.println("<script type=\"text/javascript\">");
                 out.println("alert('Invalid Credentials');");
-                out.println("location='login.jsp';");
+                out.println("location='login1.jsp';");
                 out.println("</script>");
             }
         }

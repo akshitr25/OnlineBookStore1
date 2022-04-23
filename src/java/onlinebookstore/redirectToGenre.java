@@ -26,7 +26,7 @@ public class redirectToGenre extends HttpServlet {
             MyDb db=new MyDb();
             Connection con=db.getCon();
             System.out.println(genre_var);
-            response.sendRedirect("genrePage.jsp");
+            response.sendRedirect("genrePage1.jsp");
         }
         catch(Exception ex)
         {

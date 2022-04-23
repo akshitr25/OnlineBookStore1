@@ -51,7 +51,7 @@
         
     </div>
     <div id="right">
-        <h1 id="rightheading">Login or Register</h1>
+        <h1 id="rightheading">Login</h1>
         <form action="loginCheck" method="post">
             <pre>
             <b>Username</b> <input type="text" name="user" class="text" placeholder="Enter username" required/>

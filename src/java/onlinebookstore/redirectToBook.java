@@ -22,7 +22,7 @@ public class redirectToBook extends HttpServlet {
             MyDb db=new MyDb();
             Connection con=db.getCon();
             System.out.println(bookid_var);
-            response.sendRedirect("bookInfo.jsp");
+            response.sendRedirect("bookInfo1.jsp");
         }
     }
 

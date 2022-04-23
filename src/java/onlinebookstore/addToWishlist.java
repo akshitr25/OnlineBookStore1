@@ -43,14 +43,14 @@ public class addToWishlist extends HttpServlet {
                 ps.executeUpdate();
                 out.println("<script type=\"text/javascript\">");
                 out.println("alert('Item added to your wishlist!');");
-                out.println("location='bookInfo.jsp';");
+                out.println("location='bookInfo1.jsp';");
                 out.println("</script>");
             }
             else
             {
                 out.println("<script type=\"text/javascript\">");
                 out.println("alert('Item already in your wishlist!');");
-                out.println("location='bookInfo.jsp';");
+                out.println("location='bookInfo1.jsp';");
                 out.println("</script>");
             }
             

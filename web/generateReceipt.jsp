@@ -75,7 +75,7 @@
         <script>
             function backToHome(elem)
             {
-                elem.setAttribute("action","userHome.jsp");
+                elem.setAttribute("action","userHome1.jsp");
                 elem.submit();
             }        
         </script>

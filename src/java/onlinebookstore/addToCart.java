@@ -43,7 +43,7 @@ public class addToCart extends HttpServlet {
             ps.executeUpdate(); //update done
                 out.println("<script type=\"text/javascript\">");
                 out.println("alert('Item added to your cart!');");
-                out.println("location='bookInfo.jsp';");
+                out.println("location='bookInfo1.jsp';");
                 out.println("</script>");
         }
         catch(SQLException ex)
