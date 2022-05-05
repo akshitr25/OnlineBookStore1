@@ -50,16 +50,16 @@
 			<div class="row">
 				<div class="span4">
 					<form method="POST" class="search_form">
-						<input type="text" class="input-block-level search-query" Placeholder="eg. T-sirt">
+						<input type="text" class="input-block-level search-query" Placeholder="eg. Ikigai">
 					</form>
 				</div>
 				<div class="span8">
 					<div class="account pull-right">
 						<ul class="user-menu">				
-							<li><a href="recommendPage.jsp">View Recommendations</a></li>
-							<li><a href="cartPage.jsp">Your Cart</a></li>
-							<li><a href="checkoutPage.jsp">Checkout</a></li>					
-							<li><a href="register1.jsp">Register</a></li>	 <!make it logout>		
+							<li><a href="recommendPage1.jsp">View Recommendations</a></li>
+							<li><a href="cartPage1.jsp">Your Cart</a></li>
+							<li><a href="checkoutPage1.jsp">Checkout</a></li>					
+							<li><a href="userLogout">Logout</a></li>	 <!make it logout>		
 						</ul>
 					</div>
 				</div>
@@ -118,14 +118,14 @@
                     int price=rs.getInt(5);
                     int disc=rs.getInt(6);
                     String genre=rs.getString(7);  
-                    String img_path=bookid+".jpg";
+                    String img_path="images/"+bookid+".jpg";
         %>	
                     <li class="span3">
                         <div class="product-box">
                             <span class="sale_tag"></span>												
-                            <a href="redirectToBook?bookid=<%=bookid%>"><img alt="" src=<%=img_path%>></a><br/>
+                            <a href="redirectToBook?bookid=<%=bookid%>"><img alt=<%=bookname%> src=<%=img_path%>></a><br/>
 				<a href="redirectToBook?bookid=<%=bookid%>" class="title"><%=bookname%></a><br/>
-				<a href="#" class="category"><%=genre%></a>
+				<a href="#" class="category"><%=author%></a>
 				<p class="price">Rs. <%=price%></p>
 			</div>
                     </li>
@@ -216,20 +216,34 @@
 						<div class="block">	
 							<ul class="nav nav-list">
 								<li class="nav-header">Genres</li>
+                                                                <%
+                                                                    PreparedStatement ps1=con.prepareStatement("select distinct(genre) from books;");
+                                                                    ResultSet rs1=ps1.executeQuery();
+                                                                    while(rs1.next())
+                                                                    {
+                                                                        String nav_genre=rs1.getString(1);
+                                                                        if(nav_genre.equals(genre_var))
+                                                                        {
+                                                                %>
                                                                 <li class="active"><a href="redirectToGenre?genre=<%=genre_var%>"><%=genre_var%></a></li>
-								<li><a href="redirectToGenre?genre=Fantasy Fiction">Fantasy Fiction</a></li>
-                                                                <li><a href="redirectToGenre?genre=Self-Help">Self-Help</a></li>
-								<li><a href="redirectToGenre?genre=Action and Adventure">Action and Adventure</a></li>
-								<li><a href="redirectToGenre?genre=Classics">Classics</a></li>
-								<li><a href="redirectToGenre?genre=Historical Fiction">Historical Fiction</a></li>
-							</ul>
+								<%
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                %>
+                                                                <li><a href="redirectToGenre?genre=<%=nav_genre%>"><%=nav_genre%></a></li>
+                                                                <%
+                                                                    }
+                                                                    }
+                                                                %>
+                                                        </ul>
 							<br/>
 							<ul class="nav nav-list below">
-								<li class="nav-header">PUBLICATIONS</li>
-								<li><a href="products.html">Oxford</a></li>
-								<li><a href="products.html">Emrald</a></li>
-								<li><a href="products.html">Pearson</a></li>
-								<li><a href="products.html">Wiley</a></li>
+								<li class="nav-header">Authors</li>
+                                                                <li><a href="redirectToBook?bookid=115">J.K. Rowling</a></li>
+								<li><a href="redirectToBook?bookid=122">Chris Jericho</a></li>
+								<li><a href="redirectToBook?bookid=113">Robin Sharma</a></li>
+								<li><a href="redirectToBook?bookid=141">John Cena</a></li>
 							</ul>
 						</div>
 						<div class="block">
@@ -239,29 +253,50 @@
 									<a class="left button" href="#myCarousel" data-slide="prev"></a><a class="right button" href="#myCarousel" data-slide="next"></a>
 								</span>
 							</h4>
+                                                    <%
+                                                        PreparedStatement ps2=con.prepareStatement("select bookid,bookname,genre,price from books order by rand() limit 2;");
+                                                        ResultSet rs2=ps2.executeQuery();
+                                                    %>
 							<div id="myCarousel" class="carousel slide">
 								<div class="carousel-inner">
+                                                                <%
+                                                                    rs2.next();
+                                                                        int random_bookid=rs2.getInt(1);
+                                                                        String random_bookname=rs2.getString(2);
+                                                                        String random_genre=rs2.getString(3);
+                                                                        int random_price=rs2.getInt(4);
+                                                                        String random_imgpath="images/"+random_bookid+".jpg";
+                                                                %>
 									<div class="active item">
 										<ul class="thumbnails listing-products">
 											<li class="span3">
 												<div class="product-box">
 													<span class="sale_tag"></span>												
-													<a href="product_detail.html"><img alt="" src="themes/images/ladies/1.jpg"></a><br/>
-													<a href="product_detail.html" class="title">Ikigai</a><br/>
-													<a href="#" class="category"></a>
-													<p class="price">$261</p>
+                                                                                                        <a href="redirectToBook?bookid=<%=random_bookid%>"><img alt=<%=random_bookname%> src=<%=random_imgpath%>></a><br/>
+													<a href="redirectToBook?bookid=<%=random_bookid%>" class="title"><%=random_bookname%></a><br/>
+                                                                                                        <a href="redirectToGenre?genre=<%=random_genre%>" class="category"><%=random_genre%></a>
+													<p class="price">Rs. <%=random_price%></p>
 												</div>
 											</li>
 										</ul>
+                                                                
 									</div>
 									<div class="item">
+                                                                        <%
+                                                                            rs2.next();
+                                                                            random_bookid=rs2.getInt(1);
+                                                                            random_bookname=rs2.getString(2);
+                                                                            random_genre=rs2.getString(3);
+                                                                            random_price=rs2.getInt(4);
+                                                                            random_imgpath="images/"+random_bookid+".jpg";
+                                                                        %>
 										<ul class="thumbnails listing-products">
 											<li class="span3">
 												<div class="product-box">												
-													<a href="product_detail.html"><img alt="" src="themes/images/ladies/2.jpg"></a><br/>
-													<a href="product_detail.html" class="title">Harry Potter</a><br/>
-													<a href="#" class="category"></a>
-													<p class="price">$134</p>
+													<a href="redirectToBook?bookid=<%=random_bookid%>"><img alt=<%=random_bookname%> src=<%=random_imgpath%>></a><br/>
+													<a href="redirectToBook?bookid=<%=random_bookid%>" class="title"><%=random_bookname%></a><br/>
+                                                                                                        <a href="redirectToGenre?genre=<%=random_genre%>" class="category"><%=random_genre%></a>
+													<p class="price">Rs. <%=random_price%></p>
 												</div>
 											</li>
 										</ul>
@@ -270,25 +305,25 @@
 							</div>
 						</div>
 						<div class="block">								
-							<h4 class="title"><strong>Best</strong> Seller</h4>								
+							<h4 class="title"><strong>Best</strong> Sellers</h4>								
 							<ul class="small-product">
 								<li>
-									<a href="#" title="Praesent tempor sem sodales">
-										<img src="themes/images/ladies/1.jpg" alt="Ikigai : Japanese Art of staying Young.. While growing Old">
+									<a href="redirectToBook?bookid=112" title="Ikigai">
+										<img src="images/112.jpg" alt="Ikigai : Japanese Art of staying Young.. While growing Old">
 									</a>
-									<a href="#">Ikigai</a>
+									<a href="redirectToBook?bookid=112">Ikigai</a>
 								</li>
 								<li>
-									<a href="#" title="Luctus quam ultrices rutrum">
-										<img src="themes/images/ladies/2.jpg" alt="Harry Potter and the Prisoner of Azkaban">
+									<a href="redirectToBook?bookid=147" title="Best in the World">
+										<img src="images/147.jpg" alt="Best in the World">
 									</a>
-									<a href="#">Harry Potter</a>
+									<a href="redirectToBook?bookid=147">Best in the World</a>
 								</li>
 								<li>
-									<a href="#" title="Be a Work in Progress">
-										<img src="themes/images/ladies/3.jpg" alt="Be a Work in Progress: And Other Things I'd Like to Tell My Younger Self">
+									<a href="redirectToBook?bookid=156" title="And Then There Were None">
+										<img src="images/156.jpg" alt="And Then There Were None">
 									</a>
-									<a href="#">Be a Work in Progress</a>
+									<a href="redirectToBook?bookid=156">And Then There Were None</a>
 								</li>   
 							</ul>
 						</div>
@@ -300,20 +335,20 @@
 					<div class="span3">
 						<h4>Navigation</h4>
 						<ul class="nav">
-							<li><a href="./index.html">Homepage</a></li>  
+							<li><a href="userHome1.jsp">Home Page</a></li>  
 							<li><a href="./about.html">About Us</a></li>
-							<li><a href="./contact.html">Contac Us</a></li>
-							<li><a href="./cart.html">Your Cart</a></li>
-							<li><a href="./register.html">Login</a></li>							
+							<li><a href="contact1.jsp">Contact Us</a></li>
+							<li><a href="cartPage1.jsp">Your Cart</a></li>
+							<li><a href="userLogout">Logout</a></li>							
 						</ul>					
 					</div>
 					<div class="span4">
 						<h4>My Account</h4>
 						<ul class="nav">
-							<li><a href="./RecommendProduct.html">View Recommendations</a></li>
-							<li><a href="#">Order History</a></li>
-							<li><a href="#">Wish List</a></li>
-							<li><a href="#">Newsletter</a></li>
+							<li><a href="recommendPage1.jsp">View Recommendations</a></li>
+							<li><a href="viewOrders.jsp">Order History</a></li>
+							<li><a href="wishlistPage.jsp">Wish List</a></li>
+							<li><a href="newsletter1">Newsletter</a></li>
 						</ul>
 					</div>
 					<div class="span5">
@@ -328,9 +363,6 @@
 						</span>
 					</div>					
 				</div>	
-			</section>
-			<section id="copyright">
-				<span>Template created using bootstrap</span>
 			</section>
 		</div>
 		<script src="themes/js/common.js"></script>	

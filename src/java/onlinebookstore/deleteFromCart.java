@@ -24,7 +24,7 @@ public class deleteFromCart extends HttpServlet {
             ps.setInt(1,bookid_var);
             ps.setString(2,uname_var);
             ps.executeUpdate();
-            response.sendRedirect("editCart.jsp");
+            response.sendRedirect("cartPage1.jsp");
         }
         catch(Exception ex)
         {}

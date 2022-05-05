@@ -111,7 +111,7 @@
 									</div>
 								</div>
 								<div class="control-group">
-									<label class="control-label">Username</label>
+									<label class="control-label">Password</label>
 									<div class="controls">
 										<input type="password" name="pass" placeholder="Enter your password" id="password" class="input-xlarge" required>
 									</div>
@@ -167,8 +167,9 @@
 					<div class="span3">
 						<h4>Navigation</h4>
 						<ul class="nav"> 
+                                                        <li><a href="register1.jsp">Register</a></li>
 							<li><a href="./about.html">About Us</a></li>
-							<li><a href="./contact.html">Contact Us</a></li>							
+							<li><a href="contact1.jsp">Contact Us</a></li>							
 						</ul>					
 					</div>
 <!--					<div class="span4">

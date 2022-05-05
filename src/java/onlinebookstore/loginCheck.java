@@ -26,7 +26,7 @@ public class loginCheck extends HttpServlet {
             Connection con=db.getCon();
             //out.println(username+" "+password);
             //Statement st=con.createStatement(); //issue!
-            PreparedStatement ps=con.prepareStatement("select name from users where username=? and password=?");
+            PreparedStatement ps=con.prepareStatement("select name from users where username=? and password=password(?)");
             ps.setString(1,uname);
             ps.setString(2,pswd);
             ResultSet rs=ps.executeQuery();

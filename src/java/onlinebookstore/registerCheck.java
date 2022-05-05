@@ -26,7 +26,7 @@ public class registerCheck extends HttpServlet {
             String pswd=request.getParameter("pass");
             MyDb db=new MyDb();
             Connection con=db.getCon();
-            PreparedStatement ps=con.prepareStatement("insert into users values(?,?,?,?,?,?);");
+            PreparedStatement ps=con.prepareStatement("insert into users values(?,?,?,?,?,password(?));");
             ps.setString(1,uname);
             ps.setString(2,name_var);
             ps.setString(3,phone);

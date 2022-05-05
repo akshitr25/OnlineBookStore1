@@ -27,7 +27,7 @@ public class deleteFromWishlist extends HttpServlet {
             ps.setInt(1,bookid_var);
             ps.setString(2,uname_var);
             ps.executeUpdate();
-            response.sendRedirect("wishlistPage.jsp");
+            response.sendRedirect("wishlistPage1.jsp");
         } catch (SQLException ex) {
             Logger.getLogger(deleteFromWishlist.class.getName()).log(Level.SEVERE, null, ex);
         }

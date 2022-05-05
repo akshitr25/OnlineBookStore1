@@ -41,7 +41,7 @@ public class updateQuantity extends HttpServlet {
             ps2.setInt(4,bookid_var);
             ps2.executeUpdate();
             //request.setAttribute("finalprice",finalprice_var);
-            response.sendRedirect("editCart.jsp");
+            response.sendRedirect("cartPage1.jsp");
             /*
                 out.println("<script type=\"text/javascript\">");
                 out.println("location='editCart.jsp';");

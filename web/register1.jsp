@@ -126,7 +126,7 @@
 								<div class="control-group">
 									<label class="control-label">Email address</label>
 									<div class="controls">
-										<input type="password" name="email" placeholder="Enter your email" class="input-xlarge" required>
+										<input type="text" name="email" placeholder="Enter your email" class="input-xlarge" required>
 									</div>
 								</div>
 								<div class="control-group">
@@ -159,14 +159,14 @@
 					<div class="span3">
 						<h4>Navigation</h4>
 						<ul class="nav">
-							<li><a href="userHome.jsp">Home Page</a></li>  
+                                                        <li><a href="login1.jsp">Login</a></li>	
+<!--							<li><a href="userHome1.jsp">Home Page</a></li>  -->
 							<li><a href="./about.html">About Us</a></li>
 							<li><a href="./contact.html">Contact Us</a></li>
-							<li><a href="cartPage.jsp">Your Cart</a></li>
-							<li><a href="login1.jsp">Login</a></li>							
+													
 						</ul>					
 					</div>
-					<div class="span4">
+<!--					<div class="span4">
 						<h4>My Account</h4>
 						<ul class="nav">
 							<li><a href="recommendPage.jsp">View Recommendations</a></li>
@@ -174,7 +174,7 @@
 							<li><a href="#">Wish List</a></li>
 							<li><a href="#">Newsletter</a></li>
 						</ul>
-					</div>
+					</div>-->
 					<div class="span5">
 						<p class="logo"><img src="themes/images/logo.png" class="site_logo" alt=""></p>
 						<p>Bookstore is a user friendly platform to avail offers and redeem discounts on a wide range of books with variety of quality content</p>
@@ -187,9 +187,6 @@
 						</span>
 					</div>					
 				</div>	
-			</section>
-			<section id="copyright">
-				<span>Template created using bootstrap</span>
 			</section>
 		</div>
 		<script src="themes/js/common.js"></script>

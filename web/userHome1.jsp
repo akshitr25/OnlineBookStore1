@@ -68,13 +68,13 @@
 			<div class="row">
 				<div class="span4">
 					<form method="POST" class="search_form">
-						<input type="text" class="input-block-level search-query" Placeholder="eg. T-sirt">
+						<input type="text" class="input-block-level search-query" Placeholder="eg. 5am Club">
 					</form>
 				</div>
 				<div class="span8">
 					<div class="account pull-right">
 						<ul class="user-menu">				
-							<li><a href="recommendPage.jsp">View Recommendations</a></li>
+							<li><a href="recommendPage1.jsp">View Recommendations</a></li>
 							<li><a href="cartPage1.jsp">Your Cart</a></li>
 							<li><a href="checkoutPage1.jsp">Checkout</a></li>					
 							<li><a href="userLogout">Logout</a></li>		
@@ -153,7 +153,7 @@
 												<li class="span3">
 													<div class="product-box">
 														<span class="sale_tag"></span>
-														<p><a href="redirectToGenre?genre=Wrestling"><img src="111.jpg" alt="Wrestling" /></a></p>
+														<p><a href="redirectToGenre?genre=Wrestling"><img src="images/111.jpg" alt="Wrestling" /></a></p>
 														<a href="redirectToGenre?genre=Wrestling" class="title">Wrestling</a><br/>
 														<a href="products.html" class="category"></a>
 														<p class="price"></p>
@@ -162,7 +162,7 @@
 												<li class="span3">
 													<div class="product-box">
 														<span class="sale_tag"></span>
-														<p><a href="redirectToGenre?genre=Fantasy Fiction"><img src="116.jpg" alt="Fantasy Fiction" /></a></p>
+														<p><a href="redirectToGenre?genre=Fantasy Fiction"><img src="images/116.jpg" alt="Fantasy Fiction" /></a></p>
 														<a href="redirectToGenre?genre=Fantasy Fiction" class="title">Fantasy Fiction</a><br/>
 														<a href="products.html" class="category"></a>
 														<p class="price"></p>
@@ -170,7 +170,7 @@
 												</li>
 												<li class="span3">
 													<div class="product-box">
-														<p><a href="redirectToGenre?genre=Self-Help"><img src="114.jpg" alt="Self-Help"/></a></p>
+														<p><a href="redirectToGenre?genre=Self-Help"><img src="images/114.jpg" alt="Self-Help"/></a></p>
 														<a href="redirectToGenre?genre=Self-Help" class="title">Self-Help</a><br/>
 														<a href="products.html" class="category"></a>
 														<p class="price"></p>
@@ -178,7 +178,7 @@
 												</li>
 												<li class="span3">
 													<div class="product-box">
-														<p><a href="redirectToGenre?genre=Action and Adventure"><img src="151.jpg" alt="Action and Adventure" /></a></p>
+														<p><a href="redirectToGenre?genre=Action and Adventure"><img src="images/151.jpg" alt="Action and Adventure" /></a></p>
 														<a href="redirectToGenre?genre=Action and Adventure" class="title">Action and Adventure</a><br/>
 														<a href="products.html" class="category"></a>
 														<p class="price"></p>
@@ -190,7 +190,7 @@
 											<ul class="thumbnails">
 												<li class="span3">
 													<div class="product-box">
-														<p><a href="redirectToGenre?genre=Science Fiction"><img src="160.jpg" alt="Science Fiction" /></a></p>
+														<p><a href="redirectToGenre?genre=Science Fiction"><img src="images/160.jpg" alt="Science Fiction" /></a></p>
 														<a href="redirectToGenre?genre=Science Fiction" class="title">Science Fiction</a><br/>
 														<a href="products.html" class="category"></a>
 														<p class="price"></p>
@@ -198,7 +198,7 @@
 												</li>
 												<li class="span3">
 													<div class="product-box">
-														<p><a href="redirectToGenre?genre=Classics"><img src="154.jpg" alt="Classics"/></a></p>
+														<p><a href="redirectToGenre?genre=Classics"><img src="images/154.jpg" alt="Classics"/></a></p>
 														<a href="redirectToGenre?genre=Classics" class="title">Classics</a><br/>
 														<a href="products.html" class="category"></a>
 														<p class="price"></p>
@@ -206,7 +206,7 @@
 												</li>
 												<li class="span3">
 													<div class="product-box">
-														<p><a href="redirectToGenre?genre=Mystery"><img src="155.jpg" alt="Mystery" /></a></p>
+														<p><a href="redirectToGenre?genre=Mystery"><img src="images/155.jpg" alt="Mystery" /></a></p>
 														<a href="redirectToGenre?genre=Mystery" class="title">Mystery</a><br/>
 														<a href="products.html" class="category"></a>
 														<p class="price"></p>
@@ -214,7 +214,7 @@
 												</li>
 												<li class="span3">
 													<div class="product-box">
-														<p><a href="redirectToGenre?genre=Historical Fiction"><img src="158.jpg" alt="Historical Fiction" /></a></p>
+														<p><a href="redirectToGenre?genre=Historical Fiction"><img src="images/158.jpg" alt="Historical Fiction" /></a></p>
 														<a href="redirectToGenre?genre=Historical Fiction" class="title">Historical Fiction</a><br/>
 														<a href="products.html" class="category"></a>
 														<p class="price"></p>
@@ -266,25 +266,22 @@
 				<h4 class="title"><span class="text">Authors</span></h4>
 				<div class="row">					
 					<div class="span2">
-						<a href="#"><img alt="" src="themes/images/clients/14.png"></a>
+						<a href="redirectToBook?bookid=122"><img alt="Chris Jericho" src="images/Chris Jericho.jpg" width="150"></a>
 					</div>
 					<div class="span2">
-						<a href="#"><img alt="" src="themes/images/clients/35.png"></a>
+						<a href="redirectToBook?bookid=115"><img alt="J.K. Rowling" src="images/J.K. Rowling.jpg" width="150"></a>
 					</div>
 					<div class="span2">
-						<a href="#"><img alt="" src="themes/images/clients/1.png"></a>
+						<a href="redirectToBook?bookid=141"><img alt="John Cena" src="images/John Cena.jpg"></a>
 					</div>
 					<div class="span2">
-						<a href="#"><img alt="" src="themes/images/clients/download.png"></a>
+						<a href="redirectToBook?bookid=163"><img alt="Neal Asher" src="images/Neal Asher.JPG"></a>
 					</div>
 					<div class="span2">
-						<a href="#"><img alt="" src="themes/images/clients/2.png"></a>
+						<a href="redirectToBook?bookid=129"><img alt="Jim Ross" src="images/Jim Ross.JPG"></a>
 					</div>
 					<div class="span2">
-						<a href="#"><img alt="" src="themes/images/clients/3.png"></a>
-					</div>
-					<div class="span2">
-						<a href="#"><img alt="" src="themes/images/clients/4.png"></a>
+						<a href="redirectToBook?bookid=113"><img alt="Robin Sharma" src="images/Robin Sharma.JPG"></a>
 					</div>
 				</div>
 			</section>
@@ -295,18 +292,18 @@
 						<ul class="nav">
 <!--							<li><a href="./index.html">Home Page</a></li>  -->
 							<li><a href="./about.html">About Us</a></li>
-							<li><a href="./contact.html">Contact Us</a></li>
-							<li><a href="cartPage.jsp">Your Cart</a></li>
+							<li><a href="contact1.jsp">Contact Us</a></li>
+							<li><a href="cartPage1.jsp">Your Cart</a></li>
 							<li><a href="userLogout">Logout</a></li>							
 						</ul>					
 					</div>
 					<div class="span4">
 						<h4>My Account</h4>
 						<ul class="nav">
-							<li><a href="./RecommendProduct.html">View Recommendations</a></li>
-							<li><a href="#">Order History</a></li>
-							<li><a href="#">Wish List</a></li>
-							<li><a href="#">Newsletter</a></li>
+							<li><a href="recommendPage1.jsp">View Recommendations</a></li>
+							<li><a href="viewOrders1.jsp">Order History</a></li>
+							<li><a href="wishlistPage1.jsp">Wish List</a></li>
+							<li><a href="newsletter1">Newsletter</a></li>
 						</ul>
 					</div>
 					<div class="span5">
@@ -321,9 +318,6 @@
 						</span>
 					</div>					
 				</div>	
-			</section>
-			<section id="copyright">
-				<span>Template created using bootstrap</span>
 			</section>
 		</div>
 		<script src="themes/js/common.js"></script>

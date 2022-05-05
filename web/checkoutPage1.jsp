@@ -65,15 +65,15 @@
 			<div class="row">
 				<div class="span4">
 					<form method="POST" class="search_form">
-						<input type="text" class="input-block-level search-query" Placeholder="eg. T-sirt">
+						<input type="text" class="input-block-level search-query" Placeholder="eg. Life of Pi">
 					</form>
 				</div>
 				<div class="span8">
 					<div class="account pull-right">
 						<ul class="user-menu">				
-							<li><a href="recommendPage.jsp">View Recommendations</a></li>
-							<li><a href="cart.html">Your Cart</a></li>
-							<li><a href="checkout.html">Checkout</a></li>					
+							<li><a href="recommendPage1.jsp">View Recommendations</a></li>
+							<li><a href="cartPage1.jsp">Your Cart</a></li>
+							<li><a href="checkoutPage1.jsp">Checkout</a></li>					
 							<li><a href="userLogout">Logout</a></li>			
 						</ul>
 					</div>
@@ -124,15 +124,25 @@
                                                                         <th>Unit Price</th>
 									<th>Quantity</th>
 									<th>Total</th>
-                                                                        <th>Remove</th>
 								</tr>
 							</thead>
 							<tbody>
-        <%  String username_var=session.getAttribute("user").toString();
+        <%  String uname_var=session.getAttribute("user").toString();
+            String name_var=session.getAttribute("name").toString();
             MyDb db=new MyDb();
             Connection con=db.getCon();
+//            PreparedStatement pst=con.prepareStatement("select * from orders where username=?");
+//            pst.setString(1,uname_var);
+//            ResultSet rst=pst.executeQuery();
+//            if(!rst.next())
+//            {
+//                out.println("<script type=\"text/javascript\">");
+//                out.println("alert('Please place orders to get recommendations.');");
+//                out.println("location='userHome1.jsp';");
+//                out.println("</script>");
+//            }
             PreparedStatement ps1=con.prepareStatement("select * from cart where username=?");
-            ps1.setString(1,username_var);
+            ps1.setString(1,uname_var);
             ResultSet rs1=ps1.executeQuery();
             if(!rs1.next())
             {
@@ -141,27 +151,33 @@
                 out.println("location='userHome1.jsp';");
                 out.println("</script>");
             }
-            String bookid_var=rs1.getString(2);
+            int bookid_var=rs1.getInt(2);
+            double finalprice_var=rs1.getDouble(3);
             int quantity_var=rs1.getInt(4);
-            //double finalprice_var=rs1.getDouble(3)*quantity_var;
-            PreparedStatement ps2=con.prepareStatement("select * from books where bookid=?");
-            ps2.setString(1,bookid_var);
+            PreparedStatement ps2=con.prepareStatement("select bookname,price,discount,genre from books where bookid=?");
+            ps2.setInt(1,bookid_var);
             ResultSet rs2=ps2.executeQuery();
             rs2.next();
-            String bookname_var=rs2.getString(2);
-            int price_var=rs2.getInt(5);
-            int disc_var=rs2.getInt(6);
-            String genre_var=rs2.getString(7);
-            double finalprice_var=(price_var*quantity_var)*(100-disc_var)/100;
-            String img_path=bookid_var+".jpg";
+            String bookname_var=rs2.getString(1);
+            int price_var=rs2.getInt(2);
+            int disc_var=rs2.getInt(3);
+            String genre_var=rs2.getString(4);
+            PreparedStatement ps3=con.prepareStatement("select phoneno,address from users where username=?");
+            ps3.setString(1,uname_var);
+            ResultSet rs3=ps3.executeQuery();
+            rs3.next();
+            String phoneno_var=rs3.getString(1);
+            String address_var=rs3.getString(2);
+            session.setAttribute("phoneno",phoneno_var);//trial
+            String img_path="images/"+bookid_var+".jpg";//bookid_var+".jpg";
         %>
 								<tr>
                                                                         <td><a href="redirectToBook?bookid=<%=bookid_var%>"><img alt="" src=<%=img_path%> width="155" height="250"></a></td>
                                                                         <td><%=bookname_var%><br><b>Discount: <%=disc_var%>%</b></td>
 									<td>Rs. <%=price_var%></td>
-                                                                        <td><input type="text" placeholder="1" class="input-mini"></td>
+                                                                        <td><%=quantity_var%></td>
 									<td>Rs. <%=finalprice_var%></td>
-                                                                        <td><input type="checkbox" value="option1"></td>
+<!--                                                                        <td><input type="checkbox" value="option1"></td>-->
                                                                 </tr>			  
 <!--								<tr>
 									<td><input type="checkbox" value="option1"></td>
@@ -201,9 +217,9 @@
 						</label>
 						<hr>-->
 						<p class="cart-total right">
-<!--							<strong>Sub-Total</strong>:	$100.00<br>
-							<strong>Eco Tax (-2.00)</strong>: $2.00<br>
-							<strong>VAT (17.5%)</strong>: $17.50<br>-->
+                                                        <strong>Name</strong>: ${name}<br>
+							<strong>Phone no.</strong>: <%=phoneno_var%><br>
+                                                        <strong>Shipping Address</strong>: <%=address_var%><br>
 							<strong>Final Price: </strong>Rs. <%=finalprice_var%><br>
 						</p>
 						<hr/>
@@ -219,59 +235,94 @@
 						<div class="block">	
 							<ul class="nav nav-list">
 								<li class="nav-header">Genres</li>
+                                                                <%
+                                                                    PreparedStatement psr=con.prepareStatement("select distinct(genre) from books;");
+                                                                    ResultSet rsr=psr.executeQuery();
+                                                                    while(rsr.next())
+                                                                    {
+                                                                        String nav_genre=rsr.getString(1);
+                                                                        if(nav_genre.equals(genre_var))
+                                                                        {
+                                                                %>
                                                                 <li class="active"><a href="redirectToGenre?genre=<%=genre_var%>"><%=genre_var%></a></li>
-								<li><a href="redirectToGenre?genre=Fantasy Fiction">Fantasy Fiction</a></li>
-                                                                <li><a href="redirectToGenre?genre=Self-Help">Self-Help</a></li>
-								<li><a href="redirectToGenre?genre=Action and Adventure">Action and Adventure</a></li>
-								<li><a href="redirectToGenre?genre=Classics">Classics</a></li>
-								<li><a href="redirectToGenre?genre=Science Fiction">Science Fiction</a></li>
+								<%
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                %>
+                                                               <li><a href="redirectToGenre?genre=<%=nav_genre%>"><%=nav_genre%></a></li>
+                                                                <%
+                                                                    }
+                                                                    }
+                                                                %>
 							</ul>
 							<br/>
 							<ul class="nav nav-list below">
-								<li class="nav-header">MANUFACTURES</li>
-								<li><a href="products.html">Adidas</a></li>
-								<li><a href="products.html">Nike</a></li>
-								<li><a href="products.html">Dunlop</a></li>
-								<li><a href="products.html">Yamaha</a></li>
+								<li class="nav-header">Authors</li>
+								<li><a href="redirectToBook?bookid=115">J.K. Rowling</a></li>
+								<li><a href="redirectToBook?bookid=122">Chris Jericho</a></li>
+								<li><a href="redirectToBook?bookid=113">Robin Sharma</a></li>
+								<li><a href="redirectToBook?bookid=141">John Cena</a></li>
 							</ul>
 						</div>
-						<div class="block">
+<!--						<div class="block">
 							<h4 class="title">
 								<span class="pull-left"><span class="text">Randomize</span></span>
 								<span class="pull-right">
 									<a class="left button" href="#myCarousel" data-slide="prev"></a><a class="right button" href="#myCarousel" data-slide="next"></a>
 								</span>
 							</h4>
+                                                        <%
+                                                            PreparedStatement ps4=con.prepareStatement("select bookid,bookname,genre,price from books order by rand() limit 2;");
+                                                            ResultSet rs4=ps4.executeQuery();
+                                                        %>
 							<div id="myCarousel" class="carousel slide">
 								<div class="carousel-inner">
+                                                                <%
+                                                                    rs4.next();
+                                                                    int random_bookid=rs4.getInt(1);
+                                                                    String random_bookname=rs4.getString(2);
+                                                                    String random_genre=rs4.getString(3);
+                                                                    int random_price=rs4.getInt(4);
+                                                                    String random_imgpath="images/"+random_bookid+".jpg";
+                                                                %>
 									<div class="active item">
 										<ul class="thumbnails listing-products">
 											<li class="span3">
 												<div class="product-box">
 													<span class="sale_tag"></span>												
-													<a href="product_detail.html"><img alt="" src="themes/images/ladies/2.jpg"></a><br/>
-													<a href="product_detail.html" class="title">Fusce id molestie massa</a><br/>
-													<a href="#" class="category">Suspendisse aliquet</a>
-													<p class="price">$261</p>
+                                                                                                        <a href="redirectToBook?bookid=<%=random_bookid%>"><img alt=<%=random_bookname%> src=<%=random_imgpath%>></a><br/>
+													<a href="redirectToBook?bookid=<%=random_bookid%>" class="title"><%=random_bookname%></a><br/>
+                                                                                                        <a href="redirectToGenre?genre=<%=random_genre%>" class="category"><%=random_genre%></a>
+													<p class="price">Rs. <%=random_price%></p>
 												</div>
 											</li>
 										</ul>
+                                                                
 									</div>
 									<div class="item">
+                                                                        <%
+                                                                            rs4.next();
+                                                                            random_bookid=rs4.getInt(1);
+                                                                            random_bookname=rs4.getString(2);
+                                                                            random_genre=rs4.getString(3);
+                                                                            random_price=rs4.getInt(4);
+                                                                            random_imgpath="images/"+random_bookid+".jpg";
+                                                                        %>
 										<ul class="thumbnails listing-products">
 											<li class="span3">
 												<div class="product-box">												
-													<a href="product_detail.html"><img alt="" src="themes/images/ladies/4.jpg"></a><br/>
-													<a href="product_detail.html" class="title">Tempor sem sodales</a><br/>
-													<a href="#" class="category">Urna nec lectus mollis</a>
-													<p class="price">$134</p>
+													<a href="redirectToBook?bookid=<%=random_bookid%>"><img alt=<%=random_bookname%> src=<%=random_imgpath%>></a><br/>
+													<a href="redirectToBook?bookid=<%=random_bookid%>" class="title"><%=random_bookname%></a><br/>
+                                                                                                        <a href="redirectToGenre?genre=<%=random_genre%>" class="category"><%=random_genre%></a>
+													<p class="price">Rs. <%=random_price%></p>
 												</div>
 											</li>
 										</ul>
 									</div>
 								</div>
 							</div>
-						</div>						
+						</div>						-->
 					</div>
 				</div>
 			</section>			
@@ -282,7 +333,7 @@
 						<ul class="nav">
 							<li><a href="userHome1.jsp">Home Page</a></li>  
 							<li><a href="./about.html">About Us</a></li>
-							<li><a href="./contact.html">Contact Us</a></li>
+							<li><a href="contact1.jsp">Contact Us</a></li>
 							<li><a href="cartPage1.jsp">Your Cart</a></li>
 							<li><a href="userlogout">Logout</a></li>							
 						</ul>					
@@ -290,10 +341,10 @@
 					<div class="span4">
 						<h4>My Account</h4>
 						<ul class="nav">
-							<li><a href="recommendPage.jsp">View Recommendations</a></li>
+							<li><a href="recommendPage1.jsp">View Recommendations</a></li>
 							<li><a href="viewOrders.jsp">Order History</a></li>
 							<li><a href="wishlistPage.jsp">Wish List</a></li>
-							<li><a href="#">Newsletter</a></li>
+							<li><a href="newsletter1">Newsletter</a></li>
 						</ul>
 					</div>
 					<div class="span5">
