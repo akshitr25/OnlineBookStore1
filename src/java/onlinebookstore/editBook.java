@@ -14,40 +14,28 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-public class adminLogin extends HttpServlet {
+public class editBook extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) 
-        {
-            String uname=request.getParameter("user");
-            String pswd=request.getParameter("pass");
+        try (PrintWriter out = response.getWriter()) {
+            int price_var=Integer.parseInt(request.getParameter("price"));
+            int disc_var=Integer.parseInt(request.getParameter("discount"));
+            HttpSession session=request.getSession();
+            int bookid_var=Integer.parseInt(session.getAttribute("searchbookid").toString());
             MyDb db=new MyDb();
             Connection con=db.getCon();
-            PreparedStatement ps=con.prepareStatement("select name from admin where username=? and password=password(?)");
-            ps.setString(1,uname);
-            ps.setString(2,pswd);
-            ResultSet rs=ps.executeQuery();
-            boolean found=rs.next();
-            if(found)
-            {
-                //request.getSession().setAttribute("id",sid);
-                HttpSession session=request.getSession();//?
-                session.setAttribute("admin",uname);//?
-                String name=rs.getString(1);
-                session.setAttribute("adminname",name);
-                session.setAttribute("searchbookid",null);
-                response.sendRedirect("adminHome1.jsp");
-            }
-            else
-            {
+            PreparedStatement ps1=con.prepareStatement("update books set price=?, discount=? where bookid=?;");
+            ps1.setInt(1,price_var);
+            ps1.setInt(2,disc_var);
+            ps1.setInt(3,bookid_var);
+            ps1.executeUpdate();
                 out.println("<script type=\"text/javascript\">");
-                out.println("alert('Invalid Credentials');");
-                out.println("location='admin1.jsp';");
+                out.println("alert('Update successful');");
+                out.println("location='editBook.jsp';");
                 out.println("</script>");
-            }
         } catch (SQLException ex) {
-            Logger.getLogger(adminLogin.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(editBook.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

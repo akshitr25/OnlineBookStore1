@@ -14,40 +14,34 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-public class adminLogin extends HttpServlet {
+public class searchBook extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) 
-        {
-            String uname=request.getParameter("user");
-            String pswd=request.getParameter("pass");
+        try (PrintWriter out = response.getWriter()) {
+            String searchname=request.getParameter("searchbookid");
             MyDb db=new MyDb();
             Connection con=db.getCon();
-            PreparedStatement ps=con.prepareStatement("select name from admin where username=? and password=password(?)");
-            ps.setString(1,uname);
-            ps.setString(2,pswd);
+            PreparedStatement ps=con.prepareStatement("select bookid from books where bookid=?;");
+            ps.setString(1,searchname);
+            int bookid;
             ResultSet rs=ps.executeQuery();
-            boolean found=rs.next();
-            if(found)
+            if(rs.next())
             {
-                //request.getSession().setAttribute("id",sid);
-                HttpSession session=request.getSession();//?
-                session.setAttribute("admin",uname);//?
-                String name=rs.getString(1);
-                session.setAttribute("adminname",name);
-                session.setAttribute("searchbookid",null);
-                response.sendRedirect("adminHome1.jsp");
+                bookid=rs.getInt(1);
+                HttpSession session=request.getSession();
+                session.setAttribute("searchbookid",bookid);
+                response.sendRedirect("editBook.jsp");
             }
             else
             {
                 out.println("<script type=\"text/javascript\">");
-                out.println("alert('Invalid Credentials');");
-                out.println("location='admin1.jsp';");
+                out.println("alert('Book not found.');");
+                out.println("location='editBook.jsp';");
                 out.println("</script>");
             }
         } catch (SQLException ex) {
-            Logger.getLogger(adminLogin.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(searchBook.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

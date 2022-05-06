@@ -1,3 +1,7 @@
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="java.sql.Connection"%>
+<%@page import="onlinebookstore.MyDb"%>
 <!DOCTYPE html>
 <html lang="en">
     <%
@@ -7,7 +11,7 @@
         %>
 	<head>
 		<meta charset="utf-8">
-		<title>Send Newsletter</title>
+		<title>Edit Book Info</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta name="description" content="">
 		<!--[if ie]><meta content='IE=8' http-equiv='X-UA-Compatible'/><![endif]-->
@@ -86,7 +90,7 @@
 			
 			<section class="header_text sub">
 			<img class="pageBanner" src="themes/images/pageBanner.png" alt="New products" >
-				<h4><span>Send Newsletter</span></h4>
+				<h4><span>Edit Book Info</span></h4>
 			</section>
 			<section class="main-content">				
 				<div class="row">				
@@ -106,26 +110,58 @@
 						</div>-->
 					</div>
 					<div class="span7">
-						<p>Send the newsletter to the subscibers.</p>
+						<p>Edit the information related to the books here.</p>
 <!--						<form method="post" action="#">-->
 							<fieldset>
-                                                            <form action="sendNewsletter" method="post">
-								<div class="clearfix">
-									<label for="name"><span>Subject </span></label>
-									<div class="input">
-										<input tabindex="1" size="21" id="name" name="subject" type="text" value="" class="input-xlarge" placeholder="Enter Subject">
+                                                            <%
+                                                                //String adminbookid=session.getAttribute("adminbookid").toString();
+                                                            %>
+                                                            <form action="searchBook" method="post" class="form-stacked">
+                                                                <div class="control-group">
+									<label class="control-label">Search Book</label>
+									<div class="controls">
+										<input type="text" name="searchbookid" placeholder="Enter book ID" class="input-xlarge" required>
 									</div>
-								</div>
-								<br><div class="clearfix">
-									<label for="message"><span>Message </span></label>
-									<div class="input">
-										<textarea tabindex="3" class="input-xlarge" id="message" name="message" rows="7" placeholder="Enter Message"></textarea>
+								</div>	
+                                                                    <div class="actions"><input tabindex="9" class="btn btn-inverse large" type="submit" value="Search"></div>
+                                                            </form>
+                                                                <%
+                                                                    if(session.getAttribute("searchbookid")!=null)
+                                                                    {
+                                                                        int bookid_var=Integer.parseInt(session.getAttribute("searchbookid").toString());
+                                                                        MyDb db=new MyDb();
+                                                                        Connection con=db.getCon();
+                                                                        PreparedStatement ps=con.prepareStatement("select * from books where bookid=?;");
+                                                                        ps.setInt(1,bookid_var);
+                                                                        ResultSet rs=ps.executeQuery();
+                                                                        rs.next();
+                                                                        String bookname_var=rs.getString(2);
+                                                                        String author_var=rs.getString(3);
+                                                                        int price_var=rs.getInt(5);
+                                                                        int disc_var=rs.getInt(6);
+                                                                %>
+                                                                <h4><span>Book Info</span></h4>
+                                                                <form action="editBook" method="post">
+                                                                    <div class="control-group">
+                                                                        <label class="control-label"><b>Book ID:</b> <span><%=bookid_var%></span></label>  
+                                                                        <label class="control-label"><b>Book Name:</b> <span><%=bookname_var%></span></label> 
+                                                                    </div>	
+                                                                    <div class="control-group">
+									<label class="control-label">Price</label>
+									<div class="controls">
+                                                                            <input type="number" name="price" placeholder=<%="Rs."+price_var%> class="input" required>
 									</div>
-								</div>
-								
+                                                                        <label class="control-label">Discount</label>
+                                                                        <div class="controls">
+                                                                            <input type="number" name="discount" placeholder=<%=disc_var+"%"%> class="input-mini" required>
+									</div>
+                                                                    </div>	
 								<div class="actions">
-									<button tabindex="3" type="submit" class="btn btn-inverse">Send Newsletter</button>
+									<button tabindex="3" type="submit" class="btn btn-inverse">Update</button>
 								</div>
+                                                                <%
+                                                                    }
+                                                                %>
                                                             </form>
 							</fieldset>
 					</div>				

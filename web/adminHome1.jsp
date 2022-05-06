@@ -66,6 +66,11 @@
 		<div id="top-bar" class="container">
 			<div class="row">
 				<div class="span4">
+                                    <div class="account pull-left">
+						<ul class="user-menu">				
+							<li><a href="aboutUs.html">About Us</a></li>		
+						</ul>
+                                    </div>
 				</div>
 				<div class="span8">
 					<div class="account pull-right">
@@ -107,7 +112,8 @@
 					</nav> -->
 				</div>
 			</section>
-<!--			<section  class="homepage-slider" id="home-slider">
+                    <br>
+			<section  class="homepage-slider" id="home-slider">
 				<div class="flexslider">
 					<ul class="slides">
 						<li>
@@ -115,7 +121,7 @@
 						</li>
 					</ul>
 				</div>			
-			</section>-->
+			</section>
 			<section class="header_text">
 				Hello, ${adminname} 
 <!--				<br/>Don't miss out our weekly offers.-->
@@ -147,8 +153,8 @@
 							<div class="span4">
 								<div class="service">
 									<div class="support">	
-                                                                            <a href="#"><img src="themes/images/feature_img_3.png" alt="Edit Books" /></a>
-                                                                            <a href="#"><h4 style="color: black">EDIT <strong>BOOKS</strong></h4></a>
+                                                                            <a href="editBook.jsp"><img src="themes/images/feature_img_3.png" alt="Edit Books" /></a>
+                                                                            <a href="editBook.jsp"><h4 style="color: black">EDIT <strong>BOOKS</strong></h4></a>
 										<p>Make changes to the book collection.</p>
 									</div>
 								</div>

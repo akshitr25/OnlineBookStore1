@@ -57,9 +57,9 @@
 				<div class="span8">
 					<div class="account pull-right">
 						<ul class="user-menu">				
-							<li><a href="recommendPage.jsp">View Recommendations</a></li>
+<!--							<li><a href="recommendPage.jsp">View Recommendations</a></li>
 							<li><a href="cartPage.jsp">Your Cart</a></li>
-							<li><a href="checkoutPage.jsp">Checkout</a></li>					
+							<li><a href="checkoutPage.jsp">Checkout</a></li>					-->
 							<li><a href="login1.jsp">Login</a></li>		
 						</ul>
 					</div>
