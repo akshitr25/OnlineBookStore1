@@ -36,7 +36,7 @@ public class adminLogin extends HttpServlet {
                 session.setAttribute("admin",uname);//?
                 String name=rs.getString(1);
                 session.setAttribute("adminname",name);
-                response.sendRedirect("adminHome.jsp");
+                response.sendRedirect("adminHome1.jsp");
             }
             else
             {

@@ -49,9 +49,11 @@
 		<div id="top-bar" class="container">
 			<div class="row">
 				<div class="span4">
-					<form method="POST" class="search_form">
-						<input type="text" class="input-block-level search-query" Placeholder="eg. Ikigai">
-					</form>
+					<div class="account pull-left">
+						<ul class="user-menu">				
+							<li><a href="userProfile.jsp">Your Profile</a></li>		
+						</ul>
+					</div>
 				</div>
 				<div class="span8">
 					<div class="account pull-right">

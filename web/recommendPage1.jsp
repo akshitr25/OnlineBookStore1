@@ -59,14 +59,16 @@
 		<div id="top-bar" class="container">
 			<div class="row">
 				<div class="span4">
-					<form method="POST" class="search_form">
-						<input type="text" class="input-block-level search-query" Placeholder="eg. Young Bucks Killing the Business">
-					</form>
+					<div class="account pull-left">
+						<ul class="user-menu">				
+							<li><a href="userProfile.jsp">Your Profile</a></li>		
+						</ul>
+					</div>
 				</div>
 				<div class="span8">
 					<div class="account pull-right">
 						<ul class="user-menu">				
-							<li><a href="wishlistPage.jsp">View Wishlist</a></li>
+							<li><a href="wishlistPage1.jsp">View Wishlist</a></li>
 							<li><a href="cartPage1.jsp">Your Cart</a></li>
 							<li><a href="checkoutPage1.jsp">Checkout</a></li>					
 							<li><a href="userLogout">Logout</a></li>		
@@ -345,7 +347,7 @@
 						<h4>My Account</h4>
 						<ul class="nav">
 							<li><a href="wishlistPage1.jsp">View Wishlist</a></li>
-							<li><a href="viewOrders.jsp">Order History</a></li>
+							<li><a href="viewOrders1.jsp">Order History</a></li>
                                                         <li><a href="cartPage1.jsp">View Cart</a></li>
 							<li><a href="newsletter1">Newsletter</a></li>
 						</ul>

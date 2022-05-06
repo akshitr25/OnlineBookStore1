@@ -9,6 +9,8 @@
             <%
                 MyDb db=new MyDb();
                 Connection con=db.getCon();
+                if(session.getAttribute("user")!=null) //cannot login if already logged in
+                    response.sendRedirect("userHome1.jsp");
             %>
 		<meta charset="utf-8">
 		<title>Please Login</title>

@@ -7,7 +7,7 @@
             <%@page import="java.sql.PreparedStatement"%>
             <%@page import="onlinebookstore.MyDb"%>
 		<meta charset="utf-8">
-		<title>User Home</title>
+		<title>Admin Home</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta name="description" content="">
 		<!--[if ie]><meta content='IE=8' http-equiv='X-UA-Compatible'/><![endif]-->
@@ -58,29 +58,22 @@
             response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); //HTTP 1.1
             response.setHeader("Pragma","no-cache"); //HTTP 1.0
             response.setHeader("Expires","0"); //Proxies
-            if(session.getAttribute("user")==null) //USE WITH CARE, changing variable name will lead to total confusion
-                response.sendRedirect("login1.jsp");
+            if(session.getAttribute("admin")==null) //USE WITH CARE, changing variable name will lead to total confusion
+                response.sendRedirect("admin1.jsp");
             MyDb db=new MyDb();
             Connection con=db.getCon();
-            session.setAttribute("genre",null);
         %>
 		<div id="top-bar" class="container">
 			<div class="row">
 				<div class="span4">
-                                    <div class="account pull-left">
-						<ul class="user-menu">				
-							<li><a href="userProfile.jsp">Your Profile</a></li>		
-						</ul>
-					</div>
-<!--                                    <button><a href="userProfile.jsp">Your Profile</a></button>-->
 				</div>
 				<div class="span8">
 					<div class="account pull-right">
 						<ul class="user-menu">				
-							<li><a href="recommendPage1.jsp">View Recommendations</a></li>
+<!--							<li><a href="recommendPage1.jsp">View Recommendations</a></li>
 							<li><a href="cartPage1.jsp">Your Cart</a></li>
-							<li><a href="checkoutPage1.jsp">Checkout</a></li>					
-							<li><a href="userLogout">Logout</a></li>		
+							<li><a href="checkoutPage1.jsp">Checkout</a></li>					-->
+							<li><a href="adminLogout">Logout</a></li>		
 						</ul>
 					</div>
 				</div>
@@ -89,7 +82,7 @@
 		<div id="wrapper" class="container">
 			<section class="navbar main-menu">
 				<div class="navbar-inner main-menu">				
-					<a href="index.html" class="logo pull-left"><img src="themes/images/logo.png" class="site_logo" alt=""></a>
+					<a href="adminLogin1.jsp" class="logo pull-left"><img src="themes/images/logo.png" class="site_logo" alt=""></a>
 					<!-- <nav id="menu" class="pull-right">
 						<ul>
 							<li><a href="./products.html">Woman</a>					
@@ -114,150 +107,49 @@
 					</nav> -->
 				</div>
 			</section>
-			<section  class="homepage-slider" id="home-slider">
+<!--			<section  class="homepage-slider" id="home-slider">
 				<div class="flexslider">
 					<ul class="slides">
 						<li>
 							<img src="themes/images/carousel/banner-1.jpg" alt="" />
 						</li>
-						<li>
-							<img src="themes/images/carousel/banner-2.jpg" alt="" />
-							<div class="intro">
-								<h1>Mid season sale</h1>
-								<p><span>Up to 50% Off</span></p>
-								<p><span>On selected items online and in stores</span></p>
-							</div>
-						</li>
 					</ul>
 				</div>			
-			</section>
+			</section>-->
 			<section class="header_text">
-				Hello, ${name} 
-				<br/>Don't miss out our weekly offers.
+				Hello, ${adminname} 
+<!--				<br/>Don't miss out our weekly offers.-->
 			</section>
 			<section class="main-content">
 				<div class="row">
-					<div class="span12">													
-						<div class="row">
-							<div class="span12">
-								<h4 class="title">
-									<span class="pull-left"><span class="text"><span class="line">Available <strong>Genres
-									</strong></span></span></span>
-									<span class="pull-right">
-										<a class="left button" href="#myCarousel" data-slide="prev"></a><a class="right button" href="#myCarousel" data-slide="next"></a>
-									</span>
-								</h4>
-                                                            <form action="redirectToGenre" method="post"> <!issue>
-								
-                                                                <div id="myCarousel" class="myCarousel carousel slide">
-									<div class="carousel-inner">
-										<div class="active item">
-											<ul class="thumbnails">												
-												<li class="span3">
-													<div class="product-box">
-														<span class="sale_tag"></span>
-														<p><a href="redirectToGenre?genre=Wrestling"><img src="images/111.jpg" alt="Wrestling" /></a></p>
-														<a href="redirectToGenre?genre=Wrestling" class="title">Wrestling</a><br/>
-														<a href="products.html" class="category"></a>
-														<p class="price"></p>
-													</div>
-												</li>
-												<li class="span3">
-													<div class="product-box">
-														<span class="sale_tag"></span>
-														<p><a href="redirectToGenre?genre=Fantasy Fiction"><img src="images/116.jpg" alt="Fantasy Fiction" /></a></p>
-														<a href="redirectToGenre?genre=Fantasy Fiction" class="title">Fantasy Fiction</a><br/>
-														<a href="products.html" class="category"></a>
-														<p class="price"></p>
-													</div>
-												</li>
-												<li class="span3">
-													<div class="product-box">
-														<p><a href="redirectToGenre?genre=Self-Help"><img src="images/114.jpg" alt="Self-Help"/></a></p>
-														<a href="redirectToGenre?genre=Self-Help" class="title">Self-Help</a><br/>
-														<a href="products.html" class="category"></a>
-														<p class="price"></p>
-													</div>
-												</li>
-												<li class="span3">
-													<div class="product-box">
-														<p><a href="redirectToGenre?genre=Action and Adventure"><img src="images/151.jpg" alt="Action and Adventure" /></a></p>
-														<a href="redirectToGenre?genre=Action and Adventure" class="title">Action and Adventure</a><br/>
-														<a href="products.html" class="category"></a>
-														<p class="price"></p>
-													</div>
-												</li>
-											</ul>
-										</div>
-										<div class="item">
-											<ul class="thumbnails">
-												<li class="span3">
-													<div class="product-box">
-														<p><a href="redirectToGenre?genre=Science Fiction"><img src="images/160.jpg" alt="Science Fiction" /></a></p>
-														<a href="redirectToGenre?genre=Science Fiction" class="title">Science Fiction</a><br/>
-														<a href="products.html" class="category"></a>
-														<p class="price"></p>
-													</div>
-												</li>
-												<li class="span3">
-													<div class="product-box">
-														<p><a href="redirectToGenre?genre=Classics"><img src="images/154.jpg" alt="Classics"/></a></p>
-														<a href="redirectToGenre?genre=Classics" class="title">Classics</a><br/>
-														<a href="products.html" class="category"></a>
-														<p class="price"></p>
-													</div>
-												</li>
-												<li class="span3">
-													<div class="product-box">
-														<p><a href="redirectToGenre?genre=Mystery"><img src="images/155.jpg" alt="Mystery" /></a></p>
-														<a href="redirectToGenre?genre=Mystery" class="title">Mystery</a><br/>
-														<a href="products.html" class="category"></a>
-														<p class="price"></p>
-													</div>
-												</li>
-												<li class="span3">
-													<div class="product-box">
-														<p><a href="redirectToGenre?genre=Historical Fiction"><img src="images/158.jpg" alt="Historical Fiction" /></a></p>
-														<a href="redirectToGenre?genre=Historical Fiction" class="title">Historical Fiction</a><br/>
-														<a href="products.html" class="category"></a>
-														<p class="price"></p>
-													</div>
-												</li>																																	
-											</ul>
-										</div>
-                                                                            
-									</div>							
-								</div>
-                                                            </form> <!issue>
-							</div>						
-						</div>
+					<div class="span12">	
 						<br/>
 						
 						<div class="row feature_box">						
 							<div class="span4">
 								<div class="service">
 									<div class="responsive">	
-										<img src="themes/images/feature_img_2.png" alt="" />
-										<h4>LATEST <strong>COLLECTION</strong></h4>
-										<p>Wide range of variety and Best Selling Collection</p>									
+                                                                            <a href="newsletter1.jsp"><img src="themes/images/feature_img_2.png" alt="" /></a>
+                                                                            <a href="newsletter1.jsp"><h4 style="color:black">SEND <strong>NEWSLETTER</strong></h4></a>
+										<p>Send the newsletter to the subscribers.</p>									
 									</div>
 								</div>
 							</div>
 							<div class="span4">	
 								<div class="service">
 									<div class="customize">			
-										<img src="themes/images/feature_img_1.png" alt="" />
-										<h4>FREE <strong>SHIPPING</strong></h4>
-										<p>Avail Free Shipping on first 3 orders with us.</p>
+                                                                            <a href="#"><img src="themes/images/feature_img_1.png" alt="Send Newsletter" /></a>
+                                                                            <a href="#"><h4 style="color:black">ADD <strong>BOOKS</strong></h4></a>
+										<p>Add the books to the online book store.</p>
 									</div>
 								</div>
 							</div>
 							<div class="span4">
 								<div class="service">
 									<div class="support">	
-										<img src="themes/images/feature_img_3.png" alt="" />
-										<h4>24/7 LIVE <strong>SUPPORT</strong></h4>
-										<p>Get live updates on the order tracking with our team and customer service</p>
+                                                                            <a href="#"><img src="themes/images/feature_img_3.png" alt="Edit Books" /></a>
+                                                                            <a href="#"><h4 style="color: black">EDIT <strong>BOOKS</strong></h4></a>
+										<p>Make changes to the book collection.</p>
 									</div>
 								</div>
 							</div>	
@@ -265,7 +157,7 @@
 					</div>				
 				</div>
 			</section>
-			<section class="our_client">
+<!--			<section class="our_client">
 				<h4 class="title"><span class="text">Authors</span></h4>
 				<div class="row">					
 					<div class="span2">
@@ -287,7 +179,7 @@
 						<a href="redirectToBook?bookid=113"><img alt="Robin Sharma" src="images/Robin Sharma.JPG"></a>
 					</div>
 				</div>
-			</section>
+			</section>-->
 			<section id="footer-bar">
 				<div class="row">
 					<div class="span3">
@@ -295,12 +187,12 @@
 						<ul class="nav">
 <!--							<li><a href="./index.html">Home Page</a></li>  -->
 							<li><a href="./about.html">About Us</a></li>
-							<li><a href="contact1.jsp">Contact Us</a></li>
-							<li><a href="cartPage1.jsp">Your Cart</a></li>
-							<li><a href="userLogout">Logout</a></li>							
+<!--							<li><a href="contact1.jsp">Contact Us</a></li>-->
+<!--							<li><a href="cartPage1.jsp">Your Cart</a></li>-->
+							<li><a href="adminLogout">Logout</a></li>							
 						</ul>					
 					</div>
-					<div class="span4">
+<!--					<div class="span4">
 						<h4>My Account</h4>
 						<ul class="nav">
 							<li><a href="recommendPage1.jsp">View Recommendations</a></li>
@@ -308,13 +200,13 @@
 							<li><a href="wishlistPage1.jsp">Wish List</a></li>
 							<li><a href="newsletter1">Newsletter</a></li>
 						</ul>
-					</div>
+					</div>-->
 					<div class="span5">
 						<p class="logo"><img src="themes/images/logo.png" class="site_logo" alt=""></p>
 						<p>Bookstore is a user friendly platform to avail offers and redeem discounts on a wide range of books with variety of quality content</p>
 						<br/>
 						<span class="social_icons">
-							<a class="facebook" href="#">Facebook</a>
+							<a style="color:white" class="facebook" href="facebook.com">Facebook</a>
 							<a class="twitter" href="#">Twitter</a>
 							<a class="skype" href="#">Skype</a>
 							<a class="vimeo" href="#">Vimeo</a>

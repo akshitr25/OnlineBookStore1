@@ -43,7 +43,7 @@
 						<ul class="user-menu">				
 <!--							<li><a href="recommendPage1.jsp">View Recommendations</a></li>
 							<li><a href="cartPage1.jsp">Your Cart</a></li>-->
-							<li><a href="adminHome.jsp">Home</a></li>					
+							<li><a href="adminHome1.jsp">Home</a></li>					
 							<li><a href="adminLogout">Logout</a></li>			
 						</ul>
 					</div>
@@ -53,7 +53,7 @@
 		<div id="wrapper" class="container">
 			<section class="navbar main-menu">
 				<div class="navbar-inner main-menu">				
-					<a href="adminHome.jsp" class="logo pull-left"><img src="themes/images/logo.png" class="site_logo" alt=""></a>
+					<a href="adminHome1.jsp" class="logo pull-left"><img src="themes/images/logo.png" class="site_logo" alt=""></a>
 					<nav id="menu" class="pull-right">
 <!--						<ul>
 							<li><a href="./products.html">Woman</a>					
@@ -131,10 +131,10 @@
 					<div class="span3">
 						<h4>Navigation</h4>
 						<ul class="nav">
-							<li><a href="adminHome.jsp">Home Page</a></li>  
+							<li><a href="adminHome1.jsp">Home Page</a></li>  
 							<li><a href="./about.html">About Us</a></li>
 <!--							<li><a href="cartPage1.jsp">Your Cart</a></li>-->
-							<li><a href="userLogout">Logout</a></li>							
+							<li><a href="adminLogout">Logout</a></li>							
 						</ul>					
 					</div>
 <!--					<div class="span4">

@@ -9,6 +9,8 @@
             <%
                 MyDb db=new MyDb();
                 Connection con=db.getCon();
+                if(session.getAttribute("admin")!=null) //cannot login if already logged in
+                    response.sendRedirect("adminHome1.jsp");
             %>
 		<meta charset="utf-8">
 		<title>Admin Login</title>
@@ -95,7 +97,7 @@
 			</section>			
 			<section class="header_text sub">
 			<img class="pageBanner" src="themes/images/pageBanner.png" alt="New products" >
-				<h4><span>Please Login</span></h4>
+				<h4><span>Admin Login</span></h4>
 			</section>			
 			<section class="main-content">				
 				<div class="row">
