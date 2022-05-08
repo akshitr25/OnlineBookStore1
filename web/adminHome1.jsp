@@ -144,8 +144,8 @@
 							<div class="span4">	
 								<div class="service">
 									<div class="customize">			
-                                                                            <a href="#"><img src="themes/images/feature_img_1.png" alt="Send Newsletter" /></a>
-                                                                            <a href="#"><h4 style="color:black">ADD <strong>BOOKS</strong></h4></a>
+                                                                            <a href="addBook.jsp"><img src="themes/images/feature_img_1.png" alt="Send Newsletter" /></a>
+                                                                            <a href="addBook.jsp"><h4 style="color:black">ADD <strong>BOOKS</strong></h4></a>
 										<p>Add the books to the online book store.</p>
 									</div>
 								</div>

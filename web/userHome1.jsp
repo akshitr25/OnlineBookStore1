@@ -121,11 +121,24 @@
 							<img src="themes/images/carousel/banner-1.jpg" alt="" />
 						</li>
 						<li>
-							<img src="themes/images/carousel/banner-2.jpg" alt="" />
+							<img src="themes/images/carousel/banner-3.jpg" alt="" />
 							<div class="intro">
-								<h1>Mid season sale</h1>
-								<p><span>Up to 50% Off</span></p>
-								<p><span>On selected items online and in stores</span></p>
+								<h1>Wide range of variety</h1>
+								<p><span>From Action to Historical Fiction</span></p>
+							</div>
+						</li>
+                                                <li>
+							<img src="themes/images/carousel/banner-4.jpg" alt="" />
+                                                        <div class="intro">
+								<h1>Great discounts and offers</h1>
+								<p><span>For all the avid readers</span></p>
+							</div>
+						</li>
+                                                <li>
+							<img src="themes/images/carousel/banner-5.jpg" alt="" />
+                                                        <div class="intro">
+								<h1>Check out our best sellers</h1>
+								<p><span>Read what everyone else is reading</span></p>
 							</div>
 						</li>
 					</ul>
