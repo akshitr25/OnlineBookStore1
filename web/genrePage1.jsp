@@ -348,8 +348,8 @@
 						<h4>My Account</h4>
 						<ul class="nav">
 							<li><a href="recommendPage1.jsp">View Recommendations</a></li>
-							<li><a href="viewOrders.jsp">Order History</a></li>
-							<li><a href="wishlistPage.jsp">Wish List</a></li>
+							<li><a href="viewOrders1.jsp">Order History</a></li>
+							<li><a href="wishlistPage1.jsp">Wish List</a></li>
 							<li><a href="newsletter1">Newsletter</a></li>
 						</ul>
 					</div>

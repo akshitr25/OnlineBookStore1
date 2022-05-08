@@ -87,7 +87,7 @@
 		<div id="wrapper" class="container">
 			<section class="navbar main-menu">
 				<div class="navbar-inner main-menu">				
-					<a href="adminLogin1.jsp" class="logo pull-left"><img src="themes/images/logo.png" class="site_logo" alt=""></a>
+					<a href="adminHome1.jsp" class="logo pull-left"><img src="themes/images/logo.png" class="site_logo" alt=""></a>
 					<!-- <nav id="menu" class="pull-right">
 						<ul>
 							<li><a href="./products.html">Woman</a>					
@@ -193,8 +193,8 @@
 						<ul class="nav">
 <!--							<li><a href="./index.html">Home Page</a></li>  -->
 							<li><a href="./about.html">About Us</a></li>
-<!--							<li><a href="contact1.jsp">Contact Us</a></li>-->
-<!--							<li><a href="cartPage1.jsp">Your Cart</a></li>-->
+							<li><a href="newsletter1.jsp">Send Newsletter</a></li>
+							<li><a href="editBook.jsp">Edit a book</a></li>
 							<li><a href="adminLogout">Logout</a></li>							
 						</ul>					
 					</div>

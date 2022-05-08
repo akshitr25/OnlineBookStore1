@@ -136,9 +136,9 @@
 					<div class="span3">
 						<h4>Navigation</h4>
 						<ul class="nav">
-							<li><a href="adminHome1.jsp">Home Page</a></li>  
+							<li><a href="adminHome1.jsp">Home Page</a></li> 
+							<li><a href="editBook.jsp">Edit a book</a></li>
 							<li><a href="./about.html">About Us</a></li>
-<!--							<li><a href="cartPage1.jsp">Your Cart</a></li>-->
 							<li><a href="adminLogout">Logout</a></li>							
 						</ul>					
 					</div>

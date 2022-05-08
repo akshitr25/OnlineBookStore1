@@ -247,7 +247,7 @@
 								<li><a href="redirectToBook?bookid=141">John Cena</a></li>
 							</ul>
 						</div>
-						<div class="block">
+<!--						<div class="block">
 							<h4 class="title">
 								<span class="pull-left"><span class="text">Randomize</span></span>
 								<span class="pull-right">
@@ -304,7 +304,7 @@
 									</div>
 								</div>
 							</div>
-						</div>
+						</div>-->
 						<div class="block">								
 							<h4 class="title"><strong>Best</strong> Sellers</h4>								
 							<ul class="small-product">

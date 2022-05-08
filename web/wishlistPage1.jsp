@@ -194,7 +194,7 @@
 														<a href="redirectToBook?bookid=<%=bookid_var%>" class="title"><%=bookname_var%></a><br/>
                                                                                                                 <a href="" class="category"><%=author_var%></a>
 														<p class="price">Rs. <%=price_var%></p>
-                                                                                                                <strong><a href="deleteFromWishlist?bookid=<%=bookid_var%>" style="text-decoration: none;"><center>Remove</center></a></strong>
+                                                                                                                <strong><a href="deleteFromWishlist?bookid=<%=bookid_var%>" style="text-decoration: none; color: red">Remove</a></strong>
 													</div>
 												</li>
                                                                                                 <%}}%>
