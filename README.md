@@ -1,4 +1,1 @@
-# OnlineBookStore
-add the "onlinebookstore" database folder to "C:\Program Files (x86)\MySQL\MySQL Server 5.0\data" or something like that.
-use "lib\mysql-connector-java-5.1.13-bin.jar" file to database connections
-Server: Apache Tomcat 8.0.27.0
+Online Book store is an online web application where the customer can purchase books online. Through a web browser the customers can search for a book by its genre, later can add to the cart and finally place orders. The user can login using his account details or new customers can set up an account very quickly. They should give the details of their name, contact number and shipping address. The books are divided into many genres based on subject like Fantasy Fiction, Adventure, Wrestling, Self-Help etc. The user can find books according to the genres, and then can add the books of his/her choice to wishlist and cart. The user can then place the order of the books which are added to the cart. And then a receipt would be generated.
